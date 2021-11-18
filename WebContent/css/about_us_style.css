@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/*전체 해당*/
+table {
+	border-collapse: collapse;
+}
+table a{
+	text-decoration : none;
+	color : black;
+}
+table td{
+	height : 50px;
+}
+textarea {
+	resize: none;
+	margin : 20px;
+}
+input{
+	width : 225px;
+	height : 30px;
+}
+#table_subtitle_padding{
+	padding-left : 50px;
+}
+
+/* notice */
+#notice_line{
+	border-bottom:1px solid #cccccc;
+}
+#notice_title_line{
+	border-top : 2px solid black;
+	border-bottom : 2px solid black;
+}
+#notice_detail_title{
+	border-bottom : 1px solid #ccc;
+}
+
+/* Q & A */
+#qna_title_line{
+	border-top : 2px solid black;
+	border-bottom : 1px solid #ccc;
+}
+#qna_detail_title{
+	border-top : 1px solid #ccc;
+}

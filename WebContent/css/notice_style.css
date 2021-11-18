@@ -1,0 +1,18 @@
+@charset "UTF-8";
+#notice_line{
+	border-bottom:1px solid #cccccc;
+}
+#notice_title_line{
+	border-bottom : 2px solid black;
+}
+#notice_detail_title{
+	border-top : 2px solid black;
+	border-bottom : 1px solid #ccc;
+}
+table {
+	border-collapse: collapse;
+}
+table a{
+	text-decoration : none;
+	color : black
+}
