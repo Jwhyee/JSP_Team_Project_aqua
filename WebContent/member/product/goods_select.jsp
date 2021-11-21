@@ -4,12 +4,12 @@
 <%@ include file="../../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/style-product.css">
 <body onload="init();">
-	<link rel="stylesheet" type="text/css" href="../css/style-product.css">
 <head>
 <meta charset="UTF-8">
 
 
-<link rel="stylesheet" type="text/css" href="../../css/style-product.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/style-product.css">
 
 <%
 try {
@@ -52,7 +52,8 @@ try {
 					<!-- 이미지 -->
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<img src="../../img/product/<%=p_id%>.jpg" width="500" height="200">
+							<img src="../../img/product/<%=p_id%>.jpg" width="500"
+								height="200">
 						</div>
 						<div class="swiper-slide">
 							<img src="../../img/product/<%=p_id%>_1.jpg" width="500"
@@ -103,14 +104,12 @@ try {
 				</div>
 
 				<div class="products-box-detail-realInfo border-btm-e1e1e1">
-					<span class="products-box-detail-realInfo-title">정품인증</span>
-					<span class="products-box-detail-realInfo-content">aqua 내 모든
-						상품은 100% 정품입니다.</span>
+					<span class="products-box-detail-realInfo-title">상품설명</span>
+					<span class="products-box-detail-realInfo-content">자세한 설명 보기</span>
 					<span class="products-box-detail-realInfo-popover"
 						onclick="realInfoBox();"> ∨ </span>
 					<div id="realInfo-box">
-						&lt;정품인증&gt;<br /> aqua에서 판매되는 모든 브랜드 상품은 정식제조, <br /> 정식수입원을 통해
-						유통되는 100% 정품임을 보증합니다.
+						&lt;상품 설명&gt;<br /> <%=p_description %>
 					</div>
 				</div>
 				<!--  수량 선택 및 상품 구매  -->
@@ -144,7 +143,8 @@ try {
 						</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="buy-btn" onclick="direct_product_order()">바로 구매</button>
+						<button type="button" class="buy-btn"
+							onclick="direct_product_order()">바로 구매</button>
 						<button type="button" class="cart-btn" onclick="add_to_cart()">
 							<i class="material-icons">shopping_cart</i>
 						</button>

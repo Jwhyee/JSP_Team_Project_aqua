@@ -1,29 +1,32 @@
-<%@ page contentType="text/html;charset=utf-8" %>
-<html>
-<head><title>상품등록</title></head>
-<body>
-<font color="blue" size="6"><b>[상품 등록]</b></font>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ include file="../../layout/header_manager.jsp"%>
+<link rel="stylesheet" type="text/css" href="../../css/style-table.css?v=123">
+<center>
+<font size="6"><b>[상품 등록]</b></font>
 <form method="post" action="manager_product_result.jsp" >
-<table border="2" cellpadding="10"  style="font-size:10pt;font-family:맑은 고딕">
+<table border="2" cellpadding="10"
+		style="font-size: 10pt; font-family: 맑은 고딕" class="detail">
 		<tr>
-			<td>상품 번호 :  </td>
+			<th>상품 번호 :  </th>
 			<td><input type="text" name="id"></td>
 		</tr>		
 		<tr>
-			<td>상품명 :  </td>
+			<th>상품명 :  </th>
 			<td><input type="text" name="name"></td>
 		</tr>
 
 		<tr>
-			<td>상품가격 :  </td>
-			<td><input type="text" name="price"> 원</td>
+			<th>상품가격(원):  </th>
+			<td><input type="text" name="price"></td>
 		</tr>
 		<tr>
-			<td>재고수량:  </td>
-			<td><input type="text" name="stock"> 개</td>
+			<th>재고수량(개):  </th>
+			<td><input type="text" name="stock"></td>
 		</tr>
 		<tr>
-			<td>카테고리분류 :  </td>
+			<th>카테고리분류 :  </th>
 			<td>		
 			     <select name="ctg">
 			        <option value="상">상</option>
@@ -33,16 +36,16 @@
 			 </td>
 		</tr>
 		<tr>
-			<td>옵션 : </td>
+			<th>옵션 : </th>
 			<td>
-				<input type=checkbox name="option" value="1">1
-				<input type=checkbox name="option" value="2">2
-				<input type=checkbox name="option" value="3">3
-				<input type=checkbox name="option" value="4">4
+				<input type=checkbox name="option" value="1">&nbsp1&nbsp
+				<input type=checkbox name="option" value="2">&nbsp2&nbsp
+				<input type=checkbox name="option" value="3">&nbsp3&nbsp
+				<input type=checkbox name="option" value="4">&nbsp4
 			</td>
 		</tr>	
 		<tr>
-			<td>상품설명 :  </td>
+			<th>상품설명 :  </th>
 			<td><textarea name="description" rows="5" cols="30"></textarea></td>	
 		</tr>
 </table><p>
@@ -50,5 +53,7 @@
 <input type="reset" value="취 소">
 </form>
 </body>
+</center>
+<%@ include file="../../layout/footer.jsp" %>
 </html>
 

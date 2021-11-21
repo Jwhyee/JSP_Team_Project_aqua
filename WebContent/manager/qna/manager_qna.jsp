@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>manager | All QnA</title>
-</head>
-<body>
-	<nav></nav>
+<%@ include file="../../layout/header_manager.jsp" %>
 	<div align="center">
 	<font color="blue" size='6'><b>[전체 QnA 조회]</b></font>
 		<p>
@@ -67,7 +60,13 @@
 					<a>
 						<%
 					if(qna_answer_or_not == true){
+						%>
+						<font color = "red"><b>
+						<%
 						out.println("답변 완료");
+						%>
+						</b></font>
+						<%
 					}
 					else
 						out.println("답변 대기");
@@ -97,6 +96,5 @@
 %>
 
 	</div>
-	<footer> </footer>
 </body>
 </html>

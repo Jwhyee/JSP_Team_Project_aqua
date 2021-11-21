@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/* mypage_qna */
+#mp_qna_title{
+	border-bottom : 2px solid black;
+	font-size : 13pt;
+	font-weight : bold;
+}
+#mp_qna_title td{
+	height : 50px;
+}
+#mp_qna_content_list{
+	border-bottom : 1px solid #ccc;
+	font-size : 11pt;
+	font-weight : lighter;
+}
+#mp_qna_info_title{
+	font-size : 20pt;
+	font-weight : lighter;
+	line-height : 100px;
+}
+
+/* mypage_qna_detail */
+#mp_qna_detail_info_title{
+	text-align : center;
+	font-size : 25pt;
+	font-weight : lighter;
+	line-height : 100px;
+}
+#mp_qna_detail_title{
+	border-top : 2px solid black;
+	border-bottom : 1px solid #ccc;
+	height : 70px;
+	font-size : 15pt;
+	font-weight : lighter;
+	line-height : 15pt;
+}
+#mp_qna_detail_mem_content{
+	border-bottom : 1px solid #ccc;
+}
+#mp_qna_detail_manager_title{
+	height : 100px;
+}

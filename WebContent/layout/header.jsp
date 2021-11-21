@@ -10,17 +10,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/aqua_header.css">
-
-
-
+	href="${pageContext.request.contextPath}/css/aqua_header.css?1">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/gnb.js"></script>
-<script src="${pageContext.request.contextPath}/js/tab-ex-1.js"></script>
-<title>aqua_projcet</title>
+<script src="${pageContext.request.contextPath}/js/gnb.js?v=1"></script>
+<script src="${pageContext.request.contextPath}/js/tab-ex-1.js?v=2"></script>
 
 
 <meta charset="UTF-8">
@@ -61,10 +57,18 @@
 
 
 
-<title>aqua_project</title>
 <%
 String sid = (String) session.getAttribute("sid");
 %>
+
+<c:choose>
+	<c:when test="${empty sid}">
+		<title>aqua</title>
+	</c:when>
+	<c:otherwise>
+		<title><%=sid %>님 환영합니다</title>
+	</c:otherwise>
+</c:choose>
 </head>
 
 <body>
@@ -79,6 +83,7 @@ String sid = (String) session.getAttribute("sid");
 				<ul class="service">
 					<c:choose>
 						<c:when test="${empty sid}">
+						<li><a href="${pageContext.request.contextPath}/manager/login/manager_login.jsp">admin</a></li>
 							<li><a
 									href="${pageContext.request.contextPath}/member/login/login.jsp">Login</a></li>
 							<li><a
@@ -123,7 +128,7 @@ String sid = (String) session.getAttribute("sid");
 							</a>
 							<ul class="submenu">
 								<li><a
-										href="${pageContext.request.contextPath}/member/product/goods_group.jsp">티켓
+										href="${pageContext.request.contextPath}/member/ticket/tickets_select.jsp">티켓
 										구매하기</a></li>
 								<li><a
 										href="${pageContext.request.contextPath}/member/product/goods_group.jsp">굿즈
@@ -136,8 +141,15 @@ String sid = (String) session.getAttribute("sid");
 								<span class="kor">소개</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="#">공지사항</a></li>
-								<li><a href="#">개별문의 (1:1)</a></li>
+								<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_notice.jsp">공지사항</a></li>
+							<c:choose>
+								<c:when test="${empty sid}">
+										<li><a class="btn" onClick="need_login();">개별문의 (1:1)</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_qna_write.jsp">개별문의 (1:1)</a></li>
+								</c:otherwise>
+							</c:choose>
 
 							</ul></li>
 					</ul>
@@ -145,12 +157,23 @@ String sid = (String) session.getAttribute("sid");
 			</div>
 		</div>
 	</header>
-	<div id="header-first">
-		<!-- <form id="headerSearchForm" method="POST"
-		action="<%=request.getContextPath()%>/product?cmd=search">
-		<button class="headerSearchForm-btn">
-			<i class="tiny material-icons">search</i>
-		</button>
-		<input name="keyword" placeholder="상품명 또는 브랜드명으로 검색" class="headerSearchForm-input" />
-	</form> -->
-	</div>
+	<script type="text/javascript">
+	function need_login() {
+		Swal.fire({
+			title: '로그인이 필요한 기능입니다.',
+			text: '로그인하시겠습니까?',
+			icon: 'info',
+			closeOnClickOutside: false,
+			showCancelButton: true,
+			confirmButtonText: '로그인',
+			cancelButtonText: '페이지 머물기',
+			reverseButtons: true
+		}).then((result) => {
+			if (result.isConfirmed) {
+				location.href = 'http://localhost:8080/aqua/member/login/login.jsp ';
+			} else {
+				swal.close();
+			}
+		})
+	};
+	</script>

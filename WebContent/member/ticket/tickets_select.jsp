@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="../../layout/header.jsp"%>
-<link rel="stylesheet" href="../css/tickets_style.css">
+<link rel="stylesheet" href="../../css/tickets_style.css?a">
 
 
 <!--<body> -> header.jsp에 있음-->
@@ -33,12 +33,14 @@
 				<a href="tickets_detail.jsp?t_id=<%=t_id%>">
 					<table id = 't_select' border="0">
 					<tr>
-						<td align=center rowspan="6" width = "200px">사진</td>
-						<td id = 't_name_head' colspan="3"><%=t_name %></td>
+						<td align=center rowspan="6" width = "200px">
+							<img src="../../img/tickets/<%=t_id%>.jpg" width="180" height="180">
+						</td>
+						<td id = 't_name_head' colspan="3">&nbsp&nbsp<%=t_name %></td>
 					</tr>
 					<tr>
 						<td id='t_title'>
-							<b>장소</b>
+							<b>&nbsp&nbsp장소</b>
 						</td>
 						<td id='t_desc' colspan="2">
 							<%=t_place%>
@@ -46,7 +48,7 @@
 					</tr>
 					<tr>
 						<td id='t_title' rowspan="3">
-							<b>가격</b>
+							<b>&nbsp&nbsp가격</b>
 						</td>
 						<td id='t_desc' colspan="2">
 							성인(만 19세 이상) : <%=t_price_adult%>원
@@ -64,7 +66,7 @@
 					</tr>
 					<tr>
 						<td id='t_title'>
-							<b>문의</b>
+							<b>&nbsp&nbsp문의</b>
 						</td>
 						<td id='t_desc' colspan="2">
 							1234-1234

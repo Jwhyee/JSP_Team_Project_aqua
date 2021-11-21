@@ -5,7 +5,7 @@
 <%@ include file="../../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/style-product.css">
 <body onload="init();">
-	<link rel="stylesheet" type="text/css" href="../css/style-product.css">
+	<link rel="stylesheet" type="text/css" href="../../css/style-product.css">
 <head>
 <meta charset="UTF-8">
 
@@ -37,13 +37,19 @@ try {
 	int t_price_child = rs.getInt("t_price_child");
 	String t_description = rs.getString("t_description");
 	String t_place = ("t_place");
+	
+	/*
+	String jsql2 = "SELECT * FROM ticket WHERE t_id = ?";
+	PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+	pstmt2.setString(1, key);
+	*/
 %>
 </head>
 
 
 <!-- 전체 박스 시작 -->
-<form name="product" method="post">
-	<input type=hidden name=p_id value="<%=t_id%>">
+<form name="ticket" method="post">
+	<input type=hidden name=t_id value="<%=t_id%>">
 	<div class="products-detail">
 		<!-- 상단 박스 시작 -->
 		<div class="products-detail-box">
@@ -53,20 +59,10 @@ try {
 					<!-- 이미지 -->
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<img src="../img/product/<%=t_id%>.jpg" width="500" height="200">
-						</div>
-						<div class="swiper-slide">
-							<img src="../img/product/<%=t_id%>_1.jpg" width="500"
-								height="200">
-						</div>
-						<div class="swiper-slide">
-							<img src="../../img/product/<%=t_id%>_2.jpg" width="500"
-								height="200">
+							<img src="../../img/tickets/<%=t_id%>.jpg" width="500" height="200">
 						</div>
 					</div>
 				</div>
-				<span class="products-info-desciption">※ 이미지를 좌우로 드래그하면 더 많은
-					이미지를 확인하실 수 있습니다.</span>
 			</div>
 
 			<div class="products-box-detail">
@@ -86,18 +82,16 @@ try {
 				</div>
 				<div class="products-box-detail-postInfo border-btm-e1e1e1">
 					<span class="products-box-detail-postInfo-title">배송정보</span>
-					<span class="products-box-detail-postInfo-content">일반배송</span>
+					<span class="products-box-detail-postInfo-content">e-ticket(문자 알림)</span>
 				</div>
 
 				<div class="products-box-detail-realInfo border-btm-e1e1e1">
-					<span class="products-box-detail-realInfo-title">정품인증</span>
-					<span class="products-box-detail-realInfo-content">aqua 내 모든
-						상품은 100% 정품입니다.</span>
+					<span class="products-box-detail-realInfo-title">설명</span>
+					<span class="products-box-detail-realInfo-content">아쿠아플래닛 입장 티켓입니다.</span>
 					<span class="products-box-detail-realInfo-popover"
 						onclick="realInfoBox();"> ∨ </span>
 					<div id="realInfo-box">
-						&lt;정품인증&gt;<br /> aqua에서 판매되는 모든 브랜드 상품은 정식제조, <br /> 정식수입원을 통해
-						유통되는 100% 정품임을 보증합니다.
+						&lt;티켓 설명&gt;<br /> <%=t_description%>
 					</div>
 				</div>
 				<!--  수량 선택 및 상품 구매  -->
@@ -164,7 +158,7 @@ try {
 			<li class="active" id="tab-qna"><a href="#detail-qna-box"
 					id="tab-qna-a">Q&amp;A</a></li>
 			<li class="active" id="tab-purchaseInfo"><a
-					href="#detail-purchaseInfo-box" id="tab-purchaseInfo-a">주문정보</a></li>
+					href="#detail-purchaseInfo-box" id="tab-purchaseInfo-a">환불규정</a></li>
 		</ul>
 	</div>
 	<!-- 상품정보/리뷰/Q&A/주문정보 끝 -->
@@ -205,25 +199,29 @@ try {
 
 	<!-- 주문정보 시작 -->
 	<div id="detail-purchaseInfo-box">
-		<div class="detail-purchaseInfo-header">주문정보</div>
+		<div class="detail-purchaseInfo-header">환불 규정</div>
 
-		<b>[배송 정보 ]</b><br />
+		<b>[변경 및 취소안내]</b><br/>
 		<p>
-			고객센터 연락이 어려우니 게시판에 문의주시면 빠르게 답변드리도록 하겠습니다.<br />
-			CJ대한통운(1588-1255)택배를 이용하며, 매일 오후 1시 전 주문까지만 당일발송합니다.<br /> 발송한날로부터
-			1~3일 이내 받아보실수 있습니다.<br /> (택배사의 영업사정에 따라 배송지연이 있을 수 있습니다.)
+			※특별상품이므로 부분사용 및 부분 취소/환불 불가합니다.<br>
+			※판매기간 내 취소가능합니다.<br>
+			※수량 변경 시 반드시 전체 취소 후 다시 구매 해 주시기 바랍니다.<br>
+			※취소요청은 유선상 취소 신청해주시기 바랍니다.<br>
+			※ 문자 미수신시, 판매처 문의<br>
+			※ 구매시 기재한 이용자 정보로만 재발송 가능<br>
+			※ 연락처 변경 재발송 불가<br>
 		</p>
-		<b>[ 교환/환불 정보 ]</b><br />
+		<b>[업체정보]</b><br/>
 		<p>
-			상품가치가 현저히 훼손된 경우를 제외한 모든 사유에 대해 환불이 가능합니다.<br /> 환불요청 가능 기간은 상품 수령
-			후(배송완료 시점으로부터) 7일 이내입니다.<br /> 교환/환불이 발생하는 경우 그 원인을 제공한 자가 배송비를
-			부담합니다.<br /> - 고객변심 : 최초 배송비+반품 배송비+(교환의 경우) 교환 배송비는 고객이 부담<br /> -
-			판매자귀책 : 최초 배송비+반품 배송비+(교환의 경우) 교환 배송비는 판매자가 부담<br /> 다음의 경우는 예외적으로
-			교환 및 환불이 불가능합니다.<br /> - 상품가치가 소비자의 귀책사유로 인해 현저하게 감소한 경우<br /> -
-			소비자 과실로 인한 옷의 변색(예 : 착색, 화장품, 오염 등)<br /> - 착용으로 인한 니트류 상품의 늘어남 발생 및
-			가죽 제품의 주름 발생<br /> - 기타 착용 흔적 : 택 제거 등<br /> - 구매확정된 주문의 경우<br />
-			- 귀금속류의 경우는 소비자분쟁조정기준에 의거 교환만 가능합니다.<br /> (단, 함량미달의 경우에는 환불이 가능함)<br />
-			구매자 단순변심은 상품수령후 7일이내(구매자 반품배송비 부담)
+			업체명 : 아쿠아플래닛<br>
+			주 소 : (00000) 수원<br>
+			홈페이지 : index.html<br>
+			시설문의 : 1234-5678<br>
+		</p>
+		<b>[판매처정보]</b><br/>
+		<p>
+			업체명 : 아쿠아플래닛<br>
+			예약/취소문의 : 1234-5678<br>
 		</p>
 
 	</div>
@@ -240,4 +238,4 @@ out.println(e);
 }
 %>
 <%@ include file="../../layout/footer.jsp"%>
-<script type="text/javascript" src="../js/tickets.js"></script>
+<script type="text/javascript" src="../../js/tickets.js?abc"></script>

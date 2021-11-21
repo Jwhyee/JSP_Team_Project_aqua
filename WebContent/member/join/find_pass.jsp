@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@include file="/layout/header.jsp"%>
+<%@ include file="../../layout/header.jsp"%>
 <!DOCTYPE html>
 <html>
 
@@ -32,7 +32,7 @@ try {
 		mpass = rs.getString("m_password");
 	}
 %>
-
+<center>
 <body>
 	<%
 		if(mpass == null){
@@ -41,7 +41,7 @@ try {
            <font color=black size=3>
                 입력하신 정보로 가입 된 비밀번호 존재하지 않습니다.<p>
 		        로그인 페이지로 돌아가시려면 
-		 	    <a href="login.jsp">여기</a>를 클릭하시고, <p>
+		 	    <a href="../login/login.jsp">여기</a>를 클릭하시고, <p>
 		 	    비밀번호 찾기 페이지로 돌아가실려면
 			    <a href="find_pass_form.jsp">여기</a>를 클릭하세요!
 		   </font>   
@@ -51,8 +51,7 @@ try {
 			찾으시는 비밀번호는
 			<%=mpass%>
 			입니다.<br>
-			<a href="login.jsp">로그인</a> 
-			<a href="find_pass_form">비밀번호 찾기</a>
+			<a href="../login/login.jsp">로그인</a> 
 <%} %>
 </body>
 <%
@@ -60,4 +59,6 @@ try {
 out.println(e);
 }
 %>
+</center>
+<%@ include file="../../layout/footer.jsp" %>
 </html>

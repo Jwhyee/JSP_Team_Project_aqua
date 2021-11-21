@@ -26,11 +26,14 @@
 	%>
 	<br>
 	<br>
+	<center>
 	<font size=6 color=blue><b>[상품 주문 완료]</b></font>
 	<p>
 		상품 주문이 완료되었습니다.<br>
 		<br> 주문하신 상품은 주문 완료 후 2일 이내에 배송될 예정입니다.<br>
 		<br> 남서울 멀티쇼핑몰(주)을 이용해 주셔서 감사합니다!
+	</p>
+	</center>
 <%
  } catch (Exception e) {
  out.println(e);

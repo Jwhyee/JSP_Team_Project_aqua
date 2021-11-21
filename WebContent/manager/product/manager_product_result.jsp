@@ -1,5 +1,8 @@
-<%@ page contentType="text/html;charset=utf-8" %>
-<%@ page import="java.sql.*" %> 
+a<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ include file="../../layout/header_manager.jsp"%>
+<link rel="stylesheet" type="text/css" href="../../css/style-table.css?v=123">
 <html><head><title>상품 등록 처리 결과</title></head>
 <body>
 
@@ -55,15 +58,15 @@ try {
 	pstmt.executeUpdate(); // SQL문 실행
 %>
 <center>
-<font color="blue" size='6'><b>[등록된 상품 정보]</b></font><p>
+<font color="" size='6'><b>[등록된 상품 정보]</b></font><p>
 <table border="2" cellpadding="10"  style="font-size:10pt;font-family:맑은 고딕">
-		<tr><td width="100">상품 아이디 </td><td width="300"><%=p_id%></td></tr>
-		<tr><td width="100">상품명</td><td width="300"><%=p_name%></td></tr>
-		<tr><td width="100">상품가격</td><td width="300"><%=p_price%> 원</td></tr>
-		<tr><td width="100">재고수량</td><td width="300"><%=p_stock%> 개</td></tr>
-		<tr><td width="100">카테고리 분류 </td><td width="300"><%=p_category%></td></tr>
-		<tr><td width="100">옵션 </td><td width="300"><%=p_option_list%></td></tr>
-		<tr><td width="100">상품설명</td><td width="300"><%=p_description%></td></tr>
+		<tr><th>상품 아이디</th><td ><%=p_id%></td></tr>
+		<tr><th>상품명</th><td ><%=p_name%></td></tr>
+		<tr><th>상품가격</th><td ><%=p_price%> 원</td></tr>
+		<tr><th>재고수량</th><td ><%=p_stock%> 개</td></tr>
+		<tr><th>카테고리 분류 </th><td ><%=p_category%></td></tr>
+		<tr><th>옵션 </th><td ><%=p_option_list%></td></tr>
+		<tr><th>상품설명</th><td ><%=p_description%></td></tr>
 </table><p>
 <% 
   } catch(Exception e) { 
@@ -73,5 +76,6 @@ try {
 <p>
 <a href = "manager_product_select.jsp" style="font-size:10pt;font-family:맑은 고딕">전체 등록상품  조회</a><br><br>
 </center>
+<%@ include file="../../layout/footer.jsp"%>
 </body>
 </html>

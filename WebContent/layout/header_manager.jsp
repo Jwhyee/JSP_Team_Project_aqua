@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/aqua_header.css">
+	href="${pageContext.request.contextPath}/css/aqua_header_manager.css?v=115">
 
 
 
@@ -20,7 +20,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/gnb.js"></script>
 <script src="${pageContext.request.contextPath}/js/tab-ex-1.js"></script>
-<title>aqua_projcet</title>
 
 
 <meta charset="UTF-8">
@@ -62,10 +61,19 @@
 
 
 
-<title>aqua_project</title>
+
 <%
 String manager_id = (String) session.getAttribute("manager_id");
 %>
+<c:choose>
+	<c:when test="${empty manager_id}">
+		<title>aqua</title>
+	</c:when>
+	<c:otherwise>
+		<title><%=manager_id %>매니저님 환영합니다</title>
+	</c:otherwise>
+</c:choose>
+
 </head>
 
 <body>
@@ -114,17 +122,27 @@ String manager_id = (String) session.getAttribute("manager_id");
 								<span class="kor">상품 및 티켓</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="#">상품 추가</a></li>
-								<li><a href="#">티켓 추가</a></li>
-								<li><a href="#">상품/티켓 전체 조회/수정/삭제</a></li>
-							</ul></li>
+								<li><a
+										href="${pageContext.request.contextPath}/manager/product/manager_product_insert.jsp">상품
+										추가</a></li>
+								<li><a
+										href="${pageContext.request.contextPath}/manager/product/manager_product_select.jsp">상품
+										전체 조회/수정/삭제</a></li>
+								<li><a
+										href="${pageContext.request.contextPath}/manager/tickets/manager_tickets_insert.jsp">티켓
+										추가</a></li>
+								<li><a
+										href="${pageContext.request.contextPath}/manager/tickets/manager_tickets.jsp">티켓
+										전체 조회/수정/삭제</a></li>	
+							</ul>
+							</li>
 						<li><a href="#">
 								<span class="eng">order</span>
 								<span class="kor">주문관리</span>
 							</a>
 							<ul class="submenu">
 								<li><a
-										href="${pageContext.request.contextPath}/member/product/goods_group.jsp">주문
+										href="${pageContext.request.contextPath}/manager/order/manager_order_select.jsp">주문
 										전체 보기</a></li>
 
 								<li><a href="#">후기 게시판</a></li>
@@ -135,8 +153,8 @@ String manager_id = (String) session.getAttribute("manager_id");
 								<span class="kor">문의사항</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="#">공지사항 조회/수정/삭제</a></li>
-								<li><a href="#">개별문의 조회/수정/삭제</a></li>
+								<li><a href="${pageContext.request.contextPath}/manager/notice/manager_notice.jsp">공지사항 조회/수정/삭제</a></li>
+								<li><a href="${pageContext.request.contextPath}/manager/qna/manager_qna.jsp">개별문의 조회/수정/삭제</a></li>
 
 							</ul></li>
 					</ul>

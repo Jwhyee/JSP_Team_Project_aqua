@@ -89,6 +89,19 @@ function checkID()		// ID를 입력받은 후에 팝업창을 띄워주면서
 	window.open("id_check.jsp?id="+id,"win", "width=255, height=145, scrollbars=no, resizable=no");
 }                                        // 용례)  =>  window.open("URL", "창이름", "창의 특성");
 
+function checkID2()		// ID를 입력받은 후에 팝업창을 띄워주면서 
+{  										//   checkId.jsp (중복검사 수행)를 호출해 주는 자바스크립트 함수
+	var id = newMem.id.value;		//  form의 이름이 newMem인 것에 주목할 것!
+
+    if (id  == "")				//   11~16행:  ID를 입력없이 ID 중복체크 버튼을 클릭할 경우의 처리
+    {
+		alert("ID를 입력해 주세요!"); 
+		newMem.id.focus(); 
+		return; 
+    }
+
+	window.open("../../member/join/id_check.jsp?id="+id,"win", "width=255, height=145, scrollbars=no, resizable=no");
+}                                        // 용례)  =>  window.open("URL", "창이름", "창의 특성");
 
 
 

@@ -15,13 +15,14 @@ a:hover{
 	color : black;
 }
 .t_select_wrap{
-	width : 1000px;
+	width : 700px;
 }
 #t_select{
 	background-color : #fff;
 	box-shadow : 5px 5px 5px 5px #ccc;
 }
 #t_name_head{
+	font-weight : bold;
 	border-bottom : 1px solid black;
 	margin-bottom : 10px;
 	text-align : left;

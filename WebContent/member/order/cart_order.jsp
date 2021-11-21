@@ -194,11 +194,13 @@
 
 			<table border=1 style="font-size: 10pt; font-family: 맑은 고딕">
 				<tr>
-					<td rowspan=2 align="center" width="155" bgcolor="#002C57"><font
-						size="2" color="#ECFAE4"> <strong>결제 방법</strong>
-					</font></td>
-					<td align="center" width=110 bgcolor="#002C57"><font size="2"
-						color="#ECFAE4"> <strong>신용카드 번호 </td>
+					<td rowspan=2 align="center" width="155" bgcolor="#002C57">
+						<font size="2" color="#ECFAE4"> <strong>결제 방법</strong>
+						</font>
+					</td>
+					<td align="center" width=110 bgcolor="#002C57"><font size="2" color="#ECFAE4"> 
+						<strong>신용카드 번호 
+					</td>
 					<td width=120><input type="text" name="cardNo"></td>
 					<td align="center" width=112 bgcolor="#002C57"><font size="2"
 						color="#ECFAE4"> <strong>비밀번호</strong>

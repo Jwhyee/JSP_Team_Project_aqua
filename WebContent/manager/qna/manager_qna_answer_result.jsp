@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>QnA answer result</title>
-</head>
-<body>
+<%@ include file="../../layout/header_manager.jsp" %>
 	<%
 	request.setCharacterEncoding("utf-8");
 	// QnA DB
@@ -18,7 +12,6 @@
 	String qna_answer_m_id = request.getParameter("m_id");
 	String qna_comment_date = request.getParameter("qna_comment_date");
 	String qna_comment = request.getParameter("qna_comment");
-	String manager_id = request.getParameter("manager_id");
 	
 	try {
 		String DB_URL = "jdbc:mysql://localhost:3306/aqua_project";

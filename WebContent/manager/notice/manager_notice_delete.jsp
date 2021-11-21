@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../../layout/header_manager.jsp" %>
+
 	<div align="center">
 
 		<%
@@ -28,7 +23,7 @@
 			rs.next();
 
 			int notice_no = rs.getInt("notice_no");
-			String manager_id = rs.getString("manager_id");
+			String manage_id = rs.getString("manager_id");
 			Date notice_date = rs.getDate("notice_date");
 			String notice_title = rs.getString("notice_title");
 			String notice_content = rs.getString("notice_content");
@@ -45,7 +40,7 @@
 			</tr>
 			<tr>
 				<td>매니저 아이디</td>
-				<td><%=manager_id%></td>
+				<td><%=manage_id%></td>
 			</tr>
 			<tr>
 				<td>공지 작성일</td>

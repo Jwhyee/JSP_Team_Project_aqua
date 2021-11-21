@@ -6,7 +6,6 @@
 
 
 
-</body>
 <%
 try {
 	String DB_URL = "jdbc:mysql://localhost:3306/aqua_project";
@@ -44,8 +43,8 @@ try {
 		<table border="2" cellpadding="10"
 		style="font-size: 10pt; font-family: 맑은 고딕" class="detail">
 		<tr>
-			<th width=100>ID</th>
-			<td width=200><%=id%></td>
+			<th>ID</th>
+			<td><%=id%></td>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
@@ -75,6 +74,10 @@ try {
 		<tr>
 			<th>휴대폰번호</th>
 			<td><%=phone%></td>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<td><%=email%></td>
 		</tr>
 		<tr>
 			<th>성별</th>

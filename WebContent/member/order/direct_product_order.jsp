@@ -5,7 +5,7 @@
 <%@ page import="java.sql.*"%>
 
 <script language="javascript" src="../../js/js_package.js">
-</script>?
+</script>
 <body>
 	<div class="jumbotron">
 		<div class="container">
@@ -211,7 +211,7 @@
 	String phone = rs4.getString("m_phone");
 	String address = rs4.getString("m_address");
 	%>
-	<form name="form" method="Post" action="cart_order_ok.jsp">
+	<form name="form" method="Post" action="direct_product_order_ok.jsp">
 		<!--  폼의 이름이 form으로 지정됨 -->
 		<table border=1 style="font-size: 10pt; font-family: 맑은 고딕">
 			<tr>

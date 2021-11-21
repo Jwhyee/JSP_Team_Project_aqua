@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>manager_notice_list</title>
-</head>
-<body>
+<%@ include file="../../layout/header_manager.jsp" %>
+
 	<div align="center">
 		<font color="blue" size='6'><b>[전체 공지 조회]</b></font>
 		<p>
@@ -40,7 +35,7 @@
 
 				while (rs.next()) {
 					int notice_no = rs.getInt("notice_no");
-					String manager_id = rs.getString("manager_id");
+					String manage_id = rs.getString("manager_id");
 					Date notice_date = rs.getDate("notice_date");
 					String notice_title = rs.getString("notice_title");
 					String notice_content = rs.getString("notice_content");
@@ -50,7 +45,7 @@
 					<%=notice_no%>
 				</td>
 				<td align="center">
-					<%=manager_id%>
+					<%=manage_id%>
 				</td>
 				<td align="center">
 					<%=notice_date%>

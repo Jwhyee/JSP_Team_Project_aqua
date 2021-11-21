@@ -26,14 +26,20 @@
 	%>
 
 </head>
-
+<form id="headerSearchForm" method="POST"
+		action="<%=request.getContextPath()%>/product?cmd=search">
+		<button class="headerSearchForm-btn">
+			<i class="tiny material-icons">search</i>
+		</button>
+		<input name="keyword" placeholder="상품명 또는 브랜드명으로 검색" class="headerSearchForm-input" />
+	</form>
 <div class="frame">
 	<!-- main 타이틀 시작 -->
 	<div class="favor-head border-btm-black">상품 리스트</div>
 	<div id="product_order_list">
 		<form name="list" method="post">
-			<a href="javascript:popular_list()">인기순</a>
-			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<!--<a href="javascript:popular_list()">인기순<미구현></a>
+			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp-->
 			<a href="javascript:price_high();">높은가격</a>
 			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
 			<a href="javascript:price_low();">낮은가격</a>
@@ -43,11 +49,11 @@
 	<!-- sidebar 시작 -->
 	<div class="favor-sidebar">
 		<form name="categorys" method="post">
-			<div class="favor-sidebar-title">상품 옵션</div>
+			 <!--<div class="favor-sidebar-title">상품 옵션</div>
 			<div class=" custom-checkbox favor-content">
 				<input type="checkbox" class="custom-control-input" id="notSoldout">
 				<label class="custom-control-label" for="notSoldout">품절 제외<구현중...></label>
-			</div>
+			</div> -->
 			<div class=" custom-checkbox favor-content">
 				<input type="radio" name="compList" value="상" />
 				상

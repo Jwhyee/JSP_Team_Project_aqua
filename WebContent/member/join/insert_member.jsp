@@ -64,7 +64,7 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-		<select name=phone1 class="input">
+		<select name=phone1 class="form-control">
 			<option value="010" selected>010
 			<option value="011">011
 			<option value="016">016

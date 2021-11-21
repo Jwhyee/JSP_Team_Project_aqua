@@ -2,7 +2,25 @@ var realInfoOn = false;
 var addressInfoOn = false;
 $("#realInfo-box").hide();
 $("#addressInfo-box").hide();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  매니저 티켓 등록 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+var m_t_price_teen;
+var m_t_price_child;
+var m_t_price_adult;
+function m_t_init() {
+	m_t_price_teen = 5000;
+	m_t_price_child = 10000;
+	m_t_price_adult = document.t_insert.t_price_adult.value;
+}
+function cal_price() {
+	m_t_init();
+	result_teen = document.t_insert.t_price_teen;
+	result_child = document.t_insert.t_price_child;
 
+	result_teen.value = m_t_price_adult - parseInt(m_t_price_teen);
+	result_child.value = m_t_price_adult - parseInt(m_t_price_child);
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  이미지 스크롤 등 정품인증 js 기능 등 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,21 +137,21 @@ var amount_teen;
 var amount_child;
 
 function init() {
-	sell_price_adult = document.product.sell_price_adult.value;
-	sell_price_teen = document.product.sell_price_teen.value;
-	sell_price_child = document.product.sell_price_child.value;
-	amount_adult = document.product.amount_adult.value;
-	amount_teen = document.product.amount_teen.value;
-	amount_child = document.product.amount_child.value;
-	document.product.sum.value = sell_price_adult+sell_price_teen+sell_price_child;
+	sell_price_adult = document.ticket.sell_price_adult.value;
+	sell_price_teen = document.ticket.sell_price_teen.value;
+	sell_price_child = document.ticket.sell_price_child.value;
+	amount_adult = document.ticket.amount_adult.value;
+	amount_teen = document.ticket.amount_teen.value;
+	amount_child = document.ticket.amount_child.value;
+	document.ticket.sum.value = sell_price_adult+sell_price_teen+sell_price_child;
 	change();
 }
 
 function add_a() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 	hm_a.value++;
 
 	sum.value = (parseInt(hm_a.value) * sell_price_adult) +
@@ -141,10 +159,10 @@ function add_a() {
 		(parseInt(hm_c.value) * sell_price_child);
 }
 function add_t() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 	hm_t.value++;
 
 	sum.value = (parseInt(hm_a.value) * sell_price_adult) +
@@ -152,10 +170,10 @@ function add_t() {
 		(parseInt(hm_c.value) * sell_price_child);
 }
 function add_c() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 	hm_c.value++;
 
 	sum.value = (parseInt(hm_a.value) * sell_price_adult) +
@@ -164,10 +182,10 @@ function add_c() {
 }
 
 function del_a() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 	if (hm_a.value > 0) {
 		hm_a.value--;
 		sum.value = (parseInt(hm_a.value) * sell_price_adult) +
@@ -176,10 +194,10 @@ function del_a() {
 	}
 }
 function del_t() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 	if (hm_t.value > 0) {
 		hm_t.value--;
 		sum.value = (parseInt(hm_a.value) * sell_price_adult) +
@@ -188,10 +206,10 @@ function del_t() {
 	}
 }
 function del_c() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 	if (hm_c.value > 0) {
 		hm_c.value--;
 		sum.value = (parseInt(hm_a.value) * sell_price_adult) +
@@ -201,10 +219,10 @@ function del_c() {
 }
 
 function change() {
-	hm_a = document.product.amount_adult;
-	hm_t = document.product.amount_teen;
-	hm_c = document.product.amount_child;
-	sum = document.product.sum;
+	hm_a = document.ticket.amount_adult;
+	hm_t = document.ticket.amount_teen;
+	hm_c = document.ticket.amount_child;
+	sum = document.ticket.sum;
 
 	if (hm_a.value < 0) {
 		hm_a.value = 0;
@@ -248,25 +266,29 @@ function need_login() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function direct_product_order(){  //  "구매하기 버튼 클릭시"
 	if (confirm('해당 상품을 구매하시겠습니까?')) {	
-			var str=product.amount.value;
-			var frm = document.product;
+			var str1=ticket.amount_adult.value;
+			var str2=ticket.amount_teen.value;
+			var str3=ticket.amount_child.value;
+			var frm = document.ticket;
 			frm.action = "../order/cart_in.jsp";
 			frm.submit();
 	}
 	else {
-		document.product.reset();
+		document.ticket.reset();
 	}
 }
 
 function add_to_cart() {
 	if (confirm('해당 상품을 장바구니에 추가하겠습니까?')) {
-			var str=product.amount.value;
-			var frm = document.product;
+			var str1=ticket.amount_adult.value;
+			var str2=ticket.amount_teen.value;
+			var str3=ticket.amount_child.value;
+			var frm = document.ticket;
 			frm.action = "../order/cart_in.jsp";
 			frm.submit();
 	}
 	else {
-		document.product.reset();
+		document.ticket.reset();
 	}
 }
 
@@ -275,8 +297,10 @@ function add_to_cart() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function direct_product_order()        //  "즉시구매하기" 버튼을 클릭시 호출
 {
-	var str=product.amount.value;
-	var frm = document.product;
+	var str1=ticket.amount_adult.value;
+	var str2=ticket.amount_teen.value;
+	var str3=ticket.amount_child.value;
+	var frm = document.ticket;
 	frm.action = "../order/direct_product_order.jsp";
 	frm.submit();
 }

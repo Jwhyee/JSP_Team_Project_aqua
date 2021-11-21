@@ -34,19 +34,20 @@
 		<!-- main 타이틀 시작 -->
 		<div class="favor-head border-btm-black">상품 리스트</div>
 		<div id="product_order_list">
-			<p>
+			<!-- 
 			<a href="goods_group_popular.jsp?compList=<%=compList%>">인기순</a>
+			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp-->
+			<a href="goods_group_high.jsp?compList=<%=compList%>">높은가격</a>
 			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a href="goods_group_high.jsp?compList=<%=compList%>">높은 가격</a>
-			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a href="goods_group_low.jsp?compList=<%=compList%>">낮은순</a>
+			<a href="goods_group_low.jsp?compList=<%=compList%>">낮은가격</a>
 
-			</p>
+			 
 		</div>
 		<!-- main 타이틀 끝 -->
 		<!-- sidebar 시작 -->
 		<div class="favor-sidebar">
 			<form name="categorys" method="post">
+			<!-- 
 				<div class="favor-sidebar-title">상품 옵션</div>
 				<div class=" custom-checkbox favor-content">
 					<input type="checkbox" class="custom-control-input" id="notSoldout">
@@ -55,6 +56,7 @@
 						<구현중...>
 					</label>
 				</div>
+			 -->
 				<div class=" custom-checkbox favor-content">
 					<input type="radio" name="compList" value="상"/>
 					상

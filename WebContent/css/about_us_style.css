@@ -8,6 +8,11 @@ table a{
 	text-decoration : none;
 	color : black;
 }
+table a:hover{
+	text-decoration : none;
+	color : black;
+	cursor : pointer;
+}
 table td{
 	height : 50px;
 }
@@ -15,31 +20,84 @@ textarea {
 	resize: none;
 	margin : 20px;
 }
-input{
-	width : 225px;
-	height : 30px;
+/* q&a */
+#abu_qna_info_title{
+	line-height : 20px;
+	font-size : 17pt;
+	font-weight : lighter;
 }
-#table_subtitle_padding{
-	padding-left : 50px;
+#abu_qna_title_under{
+	border-bottom : 2px solid black;
 }
-
-/* notice */
-#notice_line{
-	border-bottom:1px solid #cccccc;
-}
-#notice_title_line{
-	border-top : 2px solid black;
-	border-bottom : 1px solid black;
-}
-#notice_detail_title{
+#abu_qna_subtitle_line{
 	border-bottom : 1px solid #ccc;
+}
+#abu_qna_subtile{
+	padding-left : 30px;
+	font-size : 15pt;
+	height : 70px;
+}
+#abu_qna_subtitle_line input{
+	width : 500px;
+	height : 50px;
+}
+#abu_qna_submit_btn{
+	font-size : 15pt;
+	font-weight : lighter;
+	line-height : 15px;
+	color : white;
+	background-color : #2535C7;
+	border : none;
+	width : 150px;
+	height : 50px;
+}
+/* notice */
+#abu_notice_list{
+	border-bottom:1px solid #cccccc;
+	height : 60px;
+}
+#abu_notice_list a{
+	font-size : 15pt;
+	font-weight : 300;
+}
+#abu_notice_title_line{
+	border-top : 2px solid black;
+}
+#abu_notice_detail_title{
+	border-top : 2px solid black;
+	border-bottom : 1px solid #ccc;
+	height : 70px;
+}
+#abu_notice_list_btn{
+	font-size : 15px;
+	line-height : 15px;
+	color : white;
+	background-color : #2535C7;
+	float:right;
+	border : none;
+	width : 110px;
+	height : 35px;
+}
+#abu_notice_detail_title td{
+	font-size : 15pt;
+	font-weight : lighter;
+}
+#abu_notice_detail_content{
+	font-size : 15pt;
+	font-weight : lighter;
+	padding : 50px;
 }
 
 /* Q & A */
-#qna_title_line{
-	border-top : 2px solid black;
+#manager_q_end_line{
 	border-bottom : 1px solid #ccc;
 }
-#qna_detail_title{
-	border-top : 1px solid #ccc;
+#manager_qna_write_category{
+	text-align : center;
+	color : #555;
+}
+#manager_qna_answer_td_head{
+	border-right : none;
+	padding-left : 50px;
+	text-align : left;
 }

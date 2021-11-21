@@ -53,56 +53,57 @@ try {
 	 pstmt.setString(10,solar);
 	 
 	 pstmt.executeUpdate();
+	 
+	 
   } catch(Exception e) { 
 		out.println(e);
 }
 %>
-
-<br><br><br>
+<center>
     <h3> 축하합니다.  다음과 같이 회원 가입되었습니다! </h3><p>
 	<br><br>
-	<font color="blue" size='6'><b>[회원 가입 내역]</b></font><p>
+	<font color="" size='6'><b>[회원 가입 내역]</b></font><p>
 
-	<table border=1 cellpadding=5   style="font-size:10pt;font-family:맑은 고딕">
+	<table border=1 cellpadding=5  style="font-size:10pt;font-family:맑은 고딕">
 	<tr>
-		<td width=100>ID</td>
+		<th width=100>ID</th>
 		<td width=200><%=id%></td>
 	</tr>
 	<tr>
-		<td>비밀번호</td>
+		<th>비밀번호</th>
 		<td><%=password%></td>
 	</tr>
 	<tr>
-		<td>성명</td>
+		<th>성명</th>
 		<td><%=name%></td>
 	</tr>
 	<tr>
-		<td>주민등록번호</td>
+		<th>주민등록번호</th>
 		<td><%=joomin%></td>
 	</tr>
 	<tr>
-		<td>생년월일</td>
+		<th>생년월일</th>
 		<td>
 			<%=birth%>
 			(<%=solar%>)
 		</td>
 	</tr>
 	<tr>
-		<td>휴대폰번호</td>
+		<th>휴대폰번호</th>
 		<td><%=phone%></td>
 	</tr>
 	<tr>
-		<td>성별</td>
+		<th>성별</th>
 		<td><%=sex%></td>
 	</tr>
 	<tr>
-		<td>주소</td>
+		<th>주소</th>
 		<td><%=address %></td>
 	</tr>
 	</table>
 	<p>
 <br>
- <a href="login.jsp" style="font-size:10pt;font-family:맑은 고딕" >로그인</a>
+ <a href="../login/login.jsp" style="font-size:10pt;font-family:맑은 고딕" >로그인</a>
  </center>
 <%@ include file="../../layout/footer.jsp"%>
 </body>
