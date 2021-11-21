@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<link rel = "stylesheet" href = "../css/about_us_style.css">
-	<title>aqua | 문의 내역</title>
-</head>
-<body>
-	<nav>
+<%@ include file="../../layout/header.jsp"%>
+<link rel = "stylesheet" href = "../css/about_us_style.css?abc">
 	
-	</nav>
+
+<!--<body> -> header.jsp에 있음-->
 	<div align="center">
 
 		<table border="0" style="font-size: 10pt; font-family: 맑은 고딕; table-layout:fixed">
@@ -97,8 +91,6 @@
 %>
 		
 	</div>
-	<footer>
-	
-	</footer>
+	<%@ include file="../../layout/footer.jsp"%>
 </body>
 </html>

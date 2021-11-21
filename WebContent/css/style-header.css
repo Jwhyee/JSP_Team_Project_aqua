@@ -1,0 +1,155 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+*::before, *::after {
+	box-sizing: border-box;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.content {
+	width: 100%;
+	padding: 150px 0;
+}
+
+.inner {
+	width: 1176px;
+	margin: 0 auto;
+}
+
+.inner::after {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+#header {
+	width: 100%;
+	height: 100px;
+	background-color: rgba(13, 56, 150, 0.49);
+	z-index: 1;
+	margin-bottom:150px;
+}
+
+#header .logo {
+	float: left;
+	padding-top: 30px;
+}
+
+#header .logo a {
+	display: block;
+	width: 140px;
+	background: url('../img/logo-light-220x32.png') no-repeat left top;
+	font: 8px/40px 'inherit';
+	color: transparent;
+}
+
+#header .nav_wrap .service {
+	float: right;
+	text-align: right
+}
+
+#header .nav_wrap .service li {
+	display: inline-block;
+}
+
+#header .nav_wrap .service li a {
+	display: block;
+	padding: 0 5px;
+	font: 14px/40px 'inherit';
+	color: white;
+}
+
+#header .gnb_wrap {
+	float: right;
+}
+
+#header .bg_gnb {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	width: 100%;
+	height: 125px;
+	background-color: rgba(44, 44, 44, 0.8);
+}
+
+.gnb>li {
+	position: relative;
+	float: left;
+}
+
+.gnb>li>a {
+	position: relative;
+	display: block;
+	top: 3px;
+	padding: 20px 45px;
+	font: 16px/80px 'inherit';
+	text-transform: uppercase;
+	color: #fff;
+	text-align: center;
+}
+
+.gnb>li>a::after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 23px;
+	width: 100%;
+	height: 3px;
+	background-color: rgb(255, 255, 92);
+	transform: scaleX(0);
+	transition: 0.3s;
+}
+
+.gnb>li>a:hover::after {
+	transform: scaleX(1);
+}
+
+.gnb>li>a>span {
+	display: block;
+}
+
+.gnb>li>a>span.eng {
+	opacity: 1;
+}
+
+.gnb>li>a>span.kor {
+	opacity: 0;
+	margin-top: -80px;
+}
+
+.gnb>li>a:hover>span.eng {
+	opacity: 0;
+}
+
+.gnb>li>a:hover>span.kor {
+	opacity: 1;
+	font-weight: bold;
+}
+
+.gnb>li>.submenu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	width: 100%;
+	z-index: 1;
+}
+
+.gnb>li>.submenu>li>a {
+	display: block;
+	font: 14px/40px 'inheirt';
+	text-align: center;
+	color: #fff;
+}

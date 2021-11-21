@@ -1,0 +1,42 @@
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 각 카테고리 클릭 시
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function category_top() {
+	if (categorys.compList.value == "default"){
+		var str=categorys.compList.value;
+		var frm = document.categorys;
+		frm.action = "goods_group.jsp";
+		frm.submit();
+	}
+	else{
+		var str=categorys.compList.value;
+		var frm = document.categorys;
+		frm.action = "goods_group_category.jsp";
+		frm.submit();
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 상품 정렬
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function popular_list() {
+		var str=categorys.compList.value;
+		var frm = document.categorys;
+		frm.action = "goods_group_popular.jsp";
+		frm.submit();
+}
+
+function price_high(){
+		var str=categorys.compList.value;
+		var frm = document.categorys;
+		frm.action = "goods_group_high.jsp";
+		frm.submit();
+}
+function price_low(){
+			var str=categorys.compList.value;
+		var frm = document.categorys;
+		frm.action = "goods_group_low.jsp";
+		frm.submit();
+}
