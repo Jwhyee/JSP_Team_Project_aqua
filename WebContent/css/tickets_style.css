@@ -1,16 +1,16 @@
 @charset "UTF-8";
-/*select_ticket*/
-table{
+/* select_ticket */
+.t_select_wrap table{
 	border : 0;
 	font-size : 10pt;
 	table-layout : fixed;
 	line-height : 33px;
 }
-a{
+.t_select_wrap a{
 	text-decoration : none;
 	color : black;
 }
-a:hover{
+.t_select_wrap a:hover{
 	text-decoration : none;
 	color : black;
 }
@@ -35,4 +35,42 @@ a:hover{
 #t_desc{
 	text-align : left;
 	width : 400px;
+}
+
+/* manager ticket 조회 */
+#manager_t_sel_title{
+	border-bottom : 2px solid #c00;
+	background : #dcdcd1;
+	height : 40px;
+	font-weight : bold;
+	text-align : center;
+}
+#manager_t_sel_table{
+	border : 2px solid;
+	border-spacing : 2px;
+	border-color : grey;
+}
+
+
+/* manager ticket 삽입 */
+#manager_t_in_title{
+	font-weight : bold;
+	background : #ececec;
+	width : 150px;
+	height : 50px;
+	text-align : center;
+}
+#manager_t_in_table{
+	border : 2px solid black;
+	font-size : 12px;
+}
+#manager_t_in_table input[type="text"]{
+	vertical-align: middle;
+	width : 200px;
+	height : 30px;
+}
+#manager_t_in_table td, #manager_t_in_table th{
+	text-align : center;
+	border : 1px solid black;
+	padding : 10px;
 }

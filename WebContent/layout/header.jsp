@@ -95,7 +95,7 @@ String sid = (String) session.getAttribute("sid");
 							<li><a
 									href="${pageContext.request.contextPath}/member/login/logout.jsp">logout</a></li>
 							<li><a
-									href="${pageContext.request.contextPath}/member/my_page.jsp">mypage</a></li>
+									href="${pageContext.request.contextPath}/member/mypage/mypage.jsp">mypage</a></li>
 							<li><a
 									href="${pageContext.request.contextPath}/member/order/cart_show.jsp">cart</a></li>
 						</c:otherwise>

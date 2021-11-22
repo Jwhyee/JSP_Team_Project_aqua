@@ -40,3 +40,79 @@
 #mp_qna_detail_manager_title{
 	height : 100px;
 }
+
+/* manager Q & A 조회 */
+#manager_q_sel_title{
+	border-bottom : 2px solid #c00;
+	background : #dcdcd1;
+	height : 40px;
+	font-weight : bold;
+	text-align : center;
+}
+#manager_q_sel_table{
+	border : 2px solid;
+	border-spacing : 2px;
+	border-color : grey;
+}
+
+/* manager Q & A 답변 작성 및 수정 */
+#manager_q_detail_info_title{
+	text-align : center;
+	font-size : 25pt;
+	font-weight : lighter;
+	line-height : 100px;
+}
+#manager_q_detail_title{
+	border-top : 2px solid black;
+	border-bottom : 1px solid #ccc;
+	height : 70px;
+	font-size : 15pt;
+	font-weight : lighter;
+	line-height : 15pt;
+}
+#manager_q_detail_mem_content{
+	border-bottom : 1px solid #ccc;
+}
+#manager_q_detail_manager_title{
+	height : 100px;
+}
+#manager_q_up_detail_manager_table{
+	border : 2px solid black
+}
+#manager_q_up_detail_manager_table input[type="text"]{
+	vertical-align: middle;
+	width : 200px;
+	height : 30px;
+}
+#manager_q_up_detail_manager_table td, #manager_q_up_detail_manager_table th{
+	text-align : center;
+	border : 1px solid black;
+	padding : 10px;
+}
+#manager_q_up_detail_manager_title{
+	font-weight : bold;
+	background : #ececec;
+	width : 150px;
+	height : 50px;
+	text-align : center;
+}
+#manager_q_in_detail_manager_table{
+	border : 2px solid black
+}
+#manager_q_in_detail_manager_table input[type="text"]{
+	vertical-align: middle;
+	width : 200px;
+	height : 30px;
+}
+#manager_q_in_detail_manager_table td, #manager_q_up_detail_manager_table th{
+	text-align : center;
+	border : 1px solid black;
+	padding : 10px;
+}
+#manager_q_in_detail_manager_title{
+	font-weight : bold;
+	background : #ececec;
+	width : 150px;
+	height : 50px;
+	text-align : center;
+}

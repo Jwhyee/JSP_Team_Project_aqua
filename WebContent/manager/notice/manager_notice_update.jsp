@@ -3,6 +3,7 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ include file="../../layout/header_manager.jsp" %>
+<link rel="stylesheet" href="../../css/about_us_style.css?abc">
 <%
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -35,39 +36,41 @@
 		%>
 
 		<font color="blue" size='6'><b>[공지 정보 수정]</b></font>
+		<br><br>
 		<p>
 		<form method="post" action="manager_notice_update_result.jsp">
-			<table border="2" cellpadding="10" style="font-size: 10pt; font-family: 맑은 고딕">
+			<table id = 'manager_n_up_table' border="2" cellpadding="10" style="font-size: 10pt; font-family: 맑은 고딕">
 				<tr>
-					<td>공지 번호</td>
+					<td id = 'manager_n_up_title'>공지 번호</td>
 					<td>
 						<input type="hidden" name="notice_no" value="<%=notice_no%>"><%=notice_no%></td>
 				</tr>
 				<tr>
-					<td>매니저 아이디</td>
+					<td id = 'manager_n_up_title'>매니저 아이디</td>
 					<td>
 						<input type=text name="manager_id" value="<%=manager_id%>">
 					</td>
 				</tr>
 				<tr>
-					<td>수정일</td>
+					<td id = 'manager_n_up_title'>수정일</td>
 					<td>
 						<input type=text name="notice_date_year" value="<%= sf.format(nowTime) %>" readonly>
 					</td>
 				</tr>
 				<tr>
-					<td>공지 제목</td>
+					<td id = 'manager_n_up_title'>공지 제목</td>
 					<td>
 						<input type=text name="notice_title" value="<%=notice_title%>">
 					</td>
 				</tr>
 				<tr>
-					<td>공지 내용</td>
+					<td id = 'manager_n_up_title'>공지 내용</td>
 					<td>
 						<textarea name="notice_content" rows="5" cols="30"><%=notice_content%> </textarea>
 					</td>
 				</tr>
 			</table>
+			<br><br>
 			<input type="submit" value="수정완료">
 		</form>
 		<br> <br> <br>

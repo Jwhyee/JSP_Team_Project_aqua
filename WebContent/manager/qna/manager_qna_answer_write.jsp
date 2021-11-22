@@ -3,15 +3,17 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ include file="../../layout/header_manager.jsp" %>
+<link rel="stylesheet" href="../../css/mypage_qna.css?abc">
 	<%
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 %>
-	<nav></nav>
-	<div align="center">
-		<h3>QnA</h3>
 
-		<table border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
+	<div align="center">
+		<table style="table-layout:fixed">
+			<tr id = 'manager_q_detail_info_title'>
+				<td colspan = "3" width = "700">QnA</td>
+			</tr>
 			<%
 			try {
 				String DB_URL = "jdbc:mysql://localhost:3306/aqua_project";
@@ -37,14 +39,14 @@
 				String qna_content = rs.getString("qna_content");
 				boolean qna_answer_or_not = rs.getBoolean("qna_answer_or_not");
 			%>
-			<tr>
-				<td id='manager_qna_write_category' width=100 height=20><%=qna_category%></td>
-				<td align=left width=500 style="font-weight: bold">
+			<tr id = 'manager_q_detail_title'>
+				<td align=center width = 100 style = "color:#555;"><%=qna_category%></td>
+				<td align=left width = 400  colspan='2' style = "font-weight:bold;">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=qna_title%>
 				</td>
 			</tr>
-			<tr id=''>
-				<td align="center" colspan='2' style="padding-top: 30px">
+			<tr id = 'manager_q_detail_mem_content'>
+				<td align="center" colspan='3' style = "padding : 50px">
 					<%=qna_content%>
 				</td>
 			</tr>
@@ -60,36 +62,37 @@
 				String a_manager_id = rs2.getString("manager_id");
 				String a_qna_comment = rs2.getString("qna_comment");
 			%>
-			
+		<br>
 		<h3>답변 수정</h3>
+		<br>
 		<form method="post" action="manager_qna_answer_update_result.jsp">
-		<table border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
+		<table id = 'manager_q_up_detail_manager_table' border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
 			<tr>
-				<td id='manager_qna_answer_td_head'>QnA 번호</td>
+				<td id='manager_q_up_detail_manager_title'>QnA 번호</td>
 				<td>
 					<input type="text" name="qna_ref_no" value = "<%=qna_no%>" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td id='manager_qna_answer_td_head'>질문자 ID</td>
+				<td id='manager_q_up_detail_manager_title'>질문자 ID</td>
 				<td>
 					<input type="text" name="m_id" value = "<%=m_id%>" readonly>
 				</td>
 			</tr>
 			<tr style="display: none;">
-				<td id='manager_qna_answer_td_head'>답변 작성 여부</td>
+				<td id='manager_q_up_detail_manager_title'>답변 작성 여부</td>
 				<td>
 					<input type="text" name="qna_answer_or_not" value="true" readonly>
 				</td>
 			</tr>
 			<tr style="display: none;">
-				<td id='manager_qna_answer_td_head'>답변 작성일</td>
+				<td id='manager_q_up_detail_manager_title'>답변 작성일</td>
 				<td>
 					<input type="text" name="qna_comment_date" value="<%= sf.format(nowTime) %>" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td id='manager_qna_answer_td_head'>Manager ID</td>
+				<td id='manager_q_up_detail_manager_title'>Manager ID</td>
 				<td>
 					<input type="text" name="manager_id" value="<%=manager_id%>" readonly>
 				</td>
@@ -108,35 +111,37 @@
 			}
 			else{
 			%>
+		<br>
 		<h3>답변 작성</h3>
+		<br>
 		<form method="post" action="manager_qna_answer_result.jsp">
-		<table border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
+		<table id='manager_q_in_detail_manager_table' border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
 			<tr>
-				<td id='manager_qna_answer_td_head'>QnA 번호</td>
+				<td id='manager_q_in_detail_manager_title'>QnA 번호</td>
 				<td>
 					<input type="text" name="qna_ref_no" value = "<%=qna_no%>" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td id='manager_qna_answer_td_head'>질문자 ID</td>
+				<td id='manager_q_in_detail_manager_title'>질문자 ID</td>
 				<td>
 					<input type="text" name="m_id" value = "<%=m_id%>" readonly>
 				</td>
 			</tr>
 			<tr style="display: none;">
-				<td id='manager_qna_answer_td_head'>답변 작성 여부</td>
+				<td id='manager_q_in_detail_manager_title'>답변 작성 여부</td>
 				<td>
 					<input type="text" name="qna_answer_or_not" value="true" readonly>
 				</td>
 			</tr>
 			<tr style="display: none;">
-				<td id='manager_qna_answer_td_head'>답변 작성일</td>
+				<td id='manager_q_in_detail_manager_title'>답변 작성일</td>
 				<td>
 					<input type="text" name="qna_comment_date" value="<%= sf.format(nowTime) %>" readonly>
 				</td>
 			</tr>
 			<tr>
-				<td id='manager_qna_answer_td_head'>Manager ID</td>
+				<td id='manager_q_in_detail_manager_title'>Manager ID</td>
 				<td>
 					<input type="text" name="manager_id" value="<%=manager_id%>">
 				</td>
@@ -160,6 +165,5 @@
 %>
 		
 	</div>
-	<footer> </footer>
 </body>
 </html>

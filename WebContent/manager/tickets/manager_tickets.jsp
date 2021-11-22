@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="../../layout/header_manager.jsp" %>
+<link rel="stylesheet" href="../../css/tickets_style.css?abc">
 	<div align="center">
 		<font color="blue" size='6'><b>[전체 티켓 조회]</b></font>
 		<p>
-		<table border="1" width=1000 style="font-size: 10pt; font-family: 맑은 고딕; table-layout:fixed">
+		<table id = 'manager_t_sel_table' border="1" width=1000 style="font-size: 10pt; font-family: 맑은 고딕; table-layout:fixed">
 			<tr>
-				<td align=center>티켓 ID</td>
-				<td align=center>티켓 등록일</td>
-				<td align=center>관람 장소</td>
-				<td align=center>티켓 이름</td>
-				<td align=center>티켓 가격(어른)</td>
-				<td align=center>티켓 가격(청소년)</td>
-				<td align=center>티켓 가격(어린이)</td>
-				<td align=center>티켓 설명</td>
-				<td align=center>
+				<td id = 'manager_t_sel_title'>티켓 ID</td>
+				<td id = 'manager_t_sel_title'>티켓 등록일</td>
+				<td id = 'manager_t_sel_title'>관람 장소</td>
+				<td id = 'manager_t_sel_title'>티켓 이름</td>
+				<td id = 'manager_t_sel_title'>티켓 가격(어른)</td>
+				<td id = 'manager_t_sel_title'>티켓 가격(청소년)</td>
+				<td id = 'manager_t_sel_title'>티켓 가격(어린이)</td>
+				<td id = 'manager_t_sel_title'>티켓 설명</td>
+				<td id = 'manager_t_sel_title'>
 					<b><font color=blue>[삭제]</font></b>
 				</td>
 			</tr>

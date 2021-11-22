@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="../../layout/header_manager.jsp" %>
+<link rel="stylesheet" href="../../css/mypage_qna.css?abc">
 	<div align="center">
 	<font color="blue" size='6'><b>[전체 QnA 조회]</b></font>
 		<p>
 
-		<table border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
-			<tr id='notice_title_line'>
-				<td align=center width=100>No.</td>
-				<td align=center width=100>질문자</td>
-				<td align=center width=100>카테고리</td>
-				<td align=center width=300>문의 내용</td>
-				<td align=center width=100>작성 일자</td>
-				<td align=center width=100>답변 여부</td>
-				<td align=center width=100></td>
+		<table id = 'manager_q_sel_table' border="1" style="font-size: 10pt; font-family: 맑은 고딕; table-layout: fixed">
+			<tr>
+				<td id = 'manager_q_sel_title' width = 50>No.</td>
+				<td id = 'manager_q_sel_title' width = 100>질문자</td>
+				<td id = 'manager_q_sel_title' width = 70>카테고리</td>
+				<td id = 'manager_q_sel_title' width = 300>문의 내용</td>
+				<td id = 'manager_q_sel_title' width = 100>작성 일자</td>
+				<td id = 'manager_q_sel_title' width = 100>답변 여부</td>
+				<td id = 'manager_q_sel_title' width = 100></td>
 				
 			</tr>
 
@@ -40,7 +41,7 @@
 					String qna_title = rs.getString("qna_title");
 					String m_id = rs.getString("m_id");
 			%>
-			<tr id='notice_line'>
+			<tr>
 				<td align="center">
 					<a><%=qna_no%></a>
 				</td>

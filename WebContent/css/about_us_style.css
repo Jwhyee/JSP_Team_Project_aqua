@@ -1,25 +1,5 @@
 @charset "UTF-8";
 
-/*전체 해당*/
-table {
-	border-collapse: collapse;
-}
-table a{
-	text-decoration : none;
-	color : black;
-}
-table a:hover{
-	text-decoration : none;
-	color : black;
-	cursor : pointer;
-}
-table td{
-	height : 50px;
-}
-textarea {
-	resize: none;
-	margin : 20px;
-}
 /* q&a */
 #abu_qna_info_title{
 	line-height : 20px;
@@ -88,16 +68,61 @@ textarea {
 	padding : 50px;
 }
 
-/* Q & A */
-#manager_q_end_line{
-	border-bottom : 1px solid #ccc;
-}
-#manager_qna_write_category{
+/* manager notice 조회 */
+#manager_n_sel_title{
+	border-bottom : 2px solid #c00;
+	background : #dcdcd1;
+	height : 40px;
+	font-weight : bold;
 	text-align : center;
-	color : #555;
 }
-#manager_qna_answer_td_head{
-	border-right : none;
-	padding-left : 50px;
-	text-align : left;
+#manager_n_sel_table{
+	border : 2px solid;
+	border-spacing : 2px;
+	border-color : grey;
+}
+
+
+/* manager notice 삽입 */
+#manager_n_in_title{
+	font-weight : bold;
+	background : #ececec;
+	width : 150px;
+	height : 50px;
+	text-align : center;
+}
+#manager_n_in_table{
+	border : 2px solid black
+}
+#manager_n_in_table input[type="text"]{
+	vertical-align: middle;
+	width : 200px;
+	height : 30px;
+}
+#manager_n_in_table td, #manager_n_in_table th{
+	text-align : center;
+	border : 1px solid black;
+	padding : 10px;
+}
+
+/* manager notice 수정 */
+#manager_n_up_title{
+	font-weight : bold;
+	background : #ececec;
+	width : 150px;
+	height : 50px;
+	text-align : center;
+}
+#manager_n_up_table{
+	border : 2px solid black
+}
+#manager_n_up_table input[type="text"]{
+	vertical-align: middle;
+	width : 200px;
+	height : 30px;
+}
+#manager_n_up_table td, #manager_n_up_table th{
+	text-align : center;
+	border : 1px solid black;
+	padding : 10px;
 }
