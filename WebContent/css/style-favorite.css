@@ -59,6 +59,7 @@
 	grid-row-gap: 10px;
 	grid-column-gap: 3%;
 	grid-auto-rows: minmax(50px, auto);
+	width:1020px;
 }
 
 .favor-link-prod {
@@ -80,6 +81,16 @@
 	padding: 20px;
 }
 
+.recent li{
+	margin-bottom:15px;
+}
+
+.recent{
+	width:230px;
+	height:450px;
+	overflow: auto;
+}
+
  a:link { color: black; text-decoration: none;}
  a:visited { color: black; text-decoration: none;}
- a:hover { color: black; text-decoration: underline;}
+ a:hover { color: gray; text-decoration: none;}

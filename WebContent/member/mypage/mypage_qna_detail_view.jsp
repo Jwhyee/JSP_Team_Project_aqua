@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="../../layout/header.jsp"%>\
-<link rel = "stylesheet" href = "../../css/mypage_qna.css">
+<link rel = "stylesheet" href = "../../css/mypage_qna.css?aa">
 
 <!--<body> -> header.jsp에 있음-->
 	<div align="center">
-		<table style="table-layout:fixed">
+		<table style=" font-family: 맑은 고딕; table-layout:fixed">
 			<tr id = 'mp_qna_detail_info_title'>
 				<td colspan = "3" width = "700">QnA</td>
+			</tr>
+			<tr>
+				<td colspan='2' style = "border-top : none;">
+					<input id = "mp_qna_detail_list_btn" type="button" value = "목록 보기" onClick="location.href='mypage_qna.jsp'">
+				</td>
 			</tr>
 			<%
 			try {
@@ -82,7 +87,7 @@
 			%>
 			<tr id = 'mp_qna_detail_title'>
 				<td align=center width = 100 style = "color:#555;"><%=qna_category %></td>
-				<td align=left width = 600  colspan='2' style = "font-weight:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=qna_title%></td>
+				<td align=left width = 600  colspan='2' style = "font-weight:normal;"><%=qna_title%></td>
 			</tr>
 			<tr id = 'mp_qna_detail_mem_content'>
 				<td align="center" colspan='3' style = "padding : 50px">

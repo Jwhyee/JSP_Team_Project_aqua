@@ -133,7 +133,7 @@ try {
 						</button>
 					</c:when>
 					<c:otherwise>
-						<button type="button" class="buy-btn" onclick="direct_product_order()">바로 구매</button>
+						<button type="button" class="buy-btn" onclick="direct_ticket_order()">바로 구매</button>
 						<button type="button" class="cart-btn" onclick="add_to_cart()">
 							<i class="material-icons">shopping_cart</i>
 						</button>
@@ -238,4 +238,4 @@ out.println(e);
 }
 %>
 <%@ include file="../../layout/footer.jsp"%>
-<script type="text/javascript" src="../../js/tickets.js?abc"></script>
+<script type="text/javascript" src="../../js/tickets.js"></script>

@@ -28,14 +28,30 @@
 		PreparedStatement pstmt = con.prepareStatement(jsql);
 		pstmt.setString(1, compList);
 		ResultSet rs = pstmt.executeQuery();
+		
+		String jsql2 = "SELECT * FROM temp_recent WHERE m_id=? ORDER BY recent_date desc";
+		PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+		pstmt2.setString(1,sid);
+		ResultSet rs2  = pstmt2.executeQuery();
 	%>
 
 </head>
 
 <div class="frame">
+<header>
+			<div id="header-first">
+				<form id="headerSearchForm" method="POST"
+					action="<%=request.getContextPath()%>/product?cmd=search">
+					<button class="headerSearchForm-btn">
+						<i class="tiny material-icons">search</i>
+					</button>
+					<input name="keyword" placeholder="상품명으로 검색"
+						class="headerSearchForm-input" />
+				</form>
+	</header>
 	<!-- main 타이틀 시작 -->
 	<div class="favor-head border-btm-black">상품 리스트</div>
-	<div id="product_order_list">
+	<div id="product_order_list" style="float:right">
 	<!-- 
 			<a href="goods_group_popular.jsp?compList=<%=compList%>">인기순</a>
 			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp -->
@@ -47,9 +63,9 @@
 	<!-- sidebar 시작 -->
 	<div class="favor-sidebar">
 		<form name="categorys" method="post">
-		<!-- 
+		
 			<div class="favor-sidebar-title">상품 옵션</div>
-			<div class=" custom-checkbox favor-content">
+		<!-- 	<div class=" custom-checkbox favor-content">
 				<input type="checkbox" class="custom-control-input" id="notSoldout">
 				<label class="custom-control-label" for="notSoldout">품절 제외<구현중...></label>
 			</div> -->
@@ -71,6 +87,29 @@
 			</div><br>
 		<button type="button" class="btn btn-primary" onclick="category_top()">검색</button>
 		</form>
+		<br>
+		<div class="favor-sidebar-title">최근 본 상품</div>
+		<ul class="recent">
+		<% 
+			while(rs2.next()){
+				String m_id = rs2.getString("m_id");
+				 String p_id = rs2.getString("p_id");
+				 String p_name = rs2.getString("p_name");
+				 String recent_date = rs2.getString("recent_date");
+			 %>
+				 	<li>
+					 	<a href="goods_select.jsp?p_id=<%=p_id%>">
+					 		<li><img src="../../img/product/<%=p_id%>.jpg" height="50px" width="50px" >
+					 	</a> 
+					 	&nbsp
+					 	<a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name %></a>
+					 	
+					 	</a>
+					 </li>
+			 <%
+			 }
+			 %>
+			 </ul>
 	</div>
 </div>
 <!-- sidebar 끝 -->
@@ -120,6 +159,11 @@
 	PreparedStatement pstmt = con.prepareStatement(jsql);
 
 	ResultSet rs = pstmt.executeQuery();
+	
+	String jsql2 = "SELECT * FROM temp_recent WHERE m_id=? ORDER BY recent_date desc";
+	PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+	pstmt2.setString(1,sid);
+	ResultSet rs2  = pstmt2.executeQuery();
 
 %>
 
@@ -164,6 +208,30 @@
 			</div><br>
 		<button type="button" class="btn btn-primary" onclick="category_top()">검색</button>
 		</form>
+		<br>
+		<div class="favor-sidebar-title">최근 본 상품</div>
+		<ul class="recent">
+		<% 
+			while(rs2.next()){
+				String m_id = rs2.getString("m_id");
+				 String p_id = rs2.getString("p_id");
+				 String p_name = rs2.getString("p_name");
+				 String recent_date = rs2.getString("recent_date");
+			 %>
+				 	<li>
+					 	<a href="goods_select.jsp?p_id=<%=p_id%>">
+					 		<li><img src="../../img/product/<%=p_id%>.jpg" height="50px" width="50px" >
+					 	</a> 
+					 	&nbsp
+					 	<a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name %></a>
+					 	
+					 	</a>
+					 </li>
+			 <%
+			 }
+			 %>
+			 </ul>
+		
 	</div>
 </div>
 <!-- sidebar 끝 -->

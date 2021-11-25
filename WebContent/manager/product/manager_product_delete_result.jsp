@@ -21,7 +21,7 @@ try {
 	pstmt.setString(1, key);
 	pstmt.executeUpdate();
 %>
-<jsp:forward page="manager_product_ticket_select.jsp" />
+<jsp:forward page="manager_product_select.jsp" />
 <%
 } catch (Exception e) {
 out.println(e);

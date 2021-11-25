@@ -1,18 +1,16 @@
-<%@ page contentType="text/html;charset=euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.SimpleDateFormat"%>
-
-<html>
-<head>
-<title>·Î±×ÀÎ °á°ú</title>
-</head>
+<%@ include file="../../layout/header.jsp"%>
+<center>
 
 <body>
 
 
 	<%
-	String DB_URL = "jdbc:mysql://localhost:3306/aqua_project"; //  DB¸íÀÌ projectÀÓ
+	String DB_URL = "jdbc:mysql://localhost:3306/aqua_project"; //  DBëª…ì´ projectìž„
 	String DB_ID = "aqua";
 	String DB_PASSWORD = "1234";
 
@@ -35,24 +33,25 @@
 
 		} else {
 	%>
+	
 	<br>
 	<br>
 	<br>
 	<font color=blue size=6>
-		<·Î±×ÀÎ¿À·ù!></font>
+		<ë¡œê·¸ì¸ì˜¤ë¥˜!></font>
 	<p>
 		<br>
 		<br>
 		<font color=black size=3>
-			ºñ¹Ð¹øÈ£°¡ Àß¸ø µÇ¾ú½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØ ÁÖ¼¼¿ä!
+			ë¹„ë°€ë²ˆí˜¸ê°€ ìž˜ëª» ë˜ì—ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ í™•ì¸í•´ ì£¼ì„¸ìš”!
 			<p>
-				·Î±×ÀÎ ÆäÀÌÁö·Î µ¹¾Æ°¡½Ã·Á¸é
-				<a href="login.jsp">¿©±â</a>
-				¸¦ Å¬¸¯ÇÏ½Ã°í,
+				ë¡œê·¸ì¸ íŽ˜ì´ì§€ë¡œ ëŒì•„ê°€ì‹œë ¤ë©´
+				<a href="login.jsp">ì—¬ê¸°</a>
+				ë¥¼ í´ë¦­í•˜ì‹œê³ ,
 			<p>
-				¸ÞÀÎ ÆäÀÌÁö·Î µ¹¾Æ°¡½Ã·Á¸é
-				<a href="../index.html">¿©±â</a>
-				¸¦ Å¬¸¯ÇÏ¼¼¿ä!
+				ë©”ì¸ íŽ˜ì´ì§€ë¡œ ëŒì•„ê°€ì‹œë ¤ë©´
+				<a href="../index.html">ì—¬ê¸°</a>
+				ë¥¼ í´ë¦­í•˜ì„¸ìš”!
 		</font>
 		<%
 		}
@@ -62,25 +61,26 @@
 		<br>
 		<br>
 		<font color=blue size=6>
-			<·Î±×ÀÎ¿À·ù!></font>
+			<ë¡œê·¸ì¸ì˜¤ë¥˜!></font>
 	<p>
 		<br>
 		<br>
 		<font color=black size=3>
-			¾ÆÀÌµð°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØ ÁÖ¼¼¿ä!
+			ì•„ì´ë””ê°€ ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ í™•ì¸í•´ ì£¼ì„¸ìš”!
 			<p>
-				·Î±×ÀÎ ÆäÀÌÁö·Î µ¹¾Æ°¡½Ã·Á¸é
-				<a href="login.jsp">¿©±â</a>
-				¸¦ Å¬¸¯ÇÏ½Ã°í,
+				ë¡œê·¸ì¸ íŽ˜ì´ì§€ë¡œ ëŒì•„ê°€ì‹œë ¤ë©´
+				<a href="login.jsp">ì—¬ê¸°</a>
+				ë¥¼ í´ë¦­í•˜ì‹œê³ ,
 			<p>
-				¸ÞÀÎ ÆäÀÌÁö·Î µ¹¾Æ°¡½Ã·Á¸é
-				<a href="../index.html">¿©±â</a>
-				¸¦ Å¬¸¯ÇÏ¼¼¿ä!
+				ë©”ì¸ íŽ˜ì´ì§€ë¡œ ëŒì•„ê°€ì‹œë ¤ë©´
+				<a href="../index.jsp">ì—¬ê¸°</a>
+				ë¥¼ í´ë¦­í•˜ì„¸ìš”!
 		</font>
 
 		<%
 		}
 		%>
-	
+	</center>
+<%@ include file="../../layout/footer.jsp"%>	
 </body>
 </html>

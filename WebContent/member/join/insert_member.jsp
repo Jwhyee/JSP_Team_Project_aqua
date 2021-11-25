@@ -2,7 +2,7 @@
 
 <%@ include file="../../layout/header.jsp" %>
     
-    <script language="javascript" src="../js/js_package.js?ver=123" charset="utf-8"></script>
+    <script language="javascript" src="../../js/js_package.js" charset="utf-8"></script>
     
 <body onLoad="name_focus()">
 <div class="frame user-frm">

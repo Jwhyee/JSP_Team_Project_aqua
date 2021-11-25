@@ -24,56 +24,132 @@
 
 		Class.forName("org.gjt.mm.mysql.Driver");
 		Connection con = DriverManager.getConnection(DB_URL, DB_ID, DB_PASSWORD);
+		
 		if(compList!=null){
 		String jsql = "select * from product where p_category=? order by p_price desc";
 		PreparedStatement pstmt = con.prepareStatement(jsql);
 		pstmt.setString(1, compList);
 		ResultSet rs = pstmt.executeQuery();
+
 	%>
 
 </head>
 
 <div class="frame">
+	<header>
+		<div id="header-first">
+			<form id="headerSearchForm" method="POST"
+				action="<%=request.getContextPath()%>/product?cmd=search">
+				<button class="headerSearchForm-btn">
+					<i class="tiny material-icons">search</i>
+				</button>
+				<input name="keyword" placeholder="상품명으로 검색"
+					class="headerSearchForm-input" />
+			</form>
+	</header>
 	<!-- main 타이틀 시작 -->
 	<div class="favor-head border-btm-black">상품 리스트</div>
-	<div id="product_order_list">
+	<div id="product_order_list" style="float: right">
 		<!-- 
 			<a href="goods_group_popular.jsp?compList=<%=compList%>">인기순</a>
 			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp-->
-			<a href="goods_group_high.jsp?compList=<%=compList%>">높은가격</a>
-			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<a href="goods_group_low.jsp?compList=<%=compList%>">낮은가격</a>
-		 
+		<a href="goods_group_high.jsp?compList=<%=compList%>">높은가격</a>
+		&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<a href="goods_group_low.jsp?compList=<%=compList%>">낮은가격</a>
+
 	</div>
 	<!-- main 타이틀 끝 -->
 	<!-- sidebar 시작 -->
 	<div class="favor-sidebar">
 		<form name="categorys" method="post">
-		<!-- 
+
 			<div class="favor-sidebar-title">상품 옵션</div>
-			<div class=" custom-checkbox favor-content">
+			<!-- 	<div class=" custom-checkbox favor-content">
 				<input type="checkbox" class="custom-control-input" id="notSoldout">
 				<label class="custom-control-label" for="notSoldout">품절 제외<구현중...></label>
 			</div>
 		 -->
+			<%
+			String[] compList_arr = compList.split(" ");
+
+			String[] checked = new String[4];
+
+			for (int i = 0; i < compList_arr.length; i++) {
+				if (compList_arr[i].equals("상")) {
+					checked[0] = "checked";
+				} else if (compList_arr[i].equals("중")) {
+					checked[1] = "checked";
+				} else if (compList_arr[i].equals("하")) {
+					checked[2] = "checked";
+				} else if (compList_arr[i].equals("default")) {
+					checked[3] = "checked";
+				}
+			}
+			%>
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="상" />
+				<input type="radio" name="compList" value="상" <%=checked[0]%> />
 				상
 			</div>
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="중" />
+				<input type="radio" name="compList" value="중" <%=checked[1]%> />
 				중
 			</div>
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="하" />
+				<input type="radio" name="compList" value="하" <%=checked[2]%> />
 				하
 			</div>
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="default" />
+				<input type="radio" name="compList" value="default" <%=checked[3]%> />
 				전체보기
-			</div><br>
-		<button type="button" class="btn btn-primary" onclick="category_top()">검색</button>
+			</div>
+			<br>
+			<button type="button" class="btn btn-primary"
+				onclick="category_top()">검색</button>
 		</form>
+		<br>
+		<div class="favor-sidebar-title">최근 본 상품</div>
+		<ul class="recent">
+			<%
+			if (sid != null) {
+				String jsql2 = "SELECT * FROM temp_recent WHERE m_id=? ORDER BY recent_date desc";
+				PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+				pstmt2.setString(1, sid);
+				ResultSet rs2 = pstmt2.executeQuery();
+
+				while (rs2.next()) {
+					String m_id = rs2.getString("m_id");
+					String p_id = rs2.getString("p_id");
+					String p_name = rs2.getString("p_name");
+					String recent_date = rs2.getString("recent_date");
+			%>
+			<li><a href="goods_select.jsp?p_id=<%=p_id%>">
+					<li><img src="../../img/product/<%=p_id%>.jpg" height="50px"
+							width="50px">
+				</a> &nbsp <a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a> </a></li>
+			<%
+			}
+			} else {
+			String ct_no = session.getId();
+			String jsql2 = "SELECT * FROM temp_recent WHERE ct_no=? ORDER BY recent_date desc";
+			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+			pstmt2.setString(1, ct_no);
+			ResultSet rs2 = pstmt2.executeQuery();
+
+			while (rs2.next()) {
+			String m_id = rs2.getString("m_id");
+			String p_id = rs2.getString("p_id");
+			String p_name = rs2.getString("p_name");
+			String recent_date = rs2.getString("recent_date");
+			%>
+			<li><a href="goods_select.jsp?p_id=<%=p_id%>">
+					<li><img src="../../img/product/<%=p_id%>.jpg" height="50px"
+							width="50px">
+				</a> &nbsp <a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a> </a></li>
+			<%
+			}
+			}
+			%>
+		</ul>
 	</div>
 </div>
 <!-- sidebar 끝 -->
@@ -118,37 +194,52 @@
 
 </div>
 <!-- 전체 박스 끝 -->
-<%}else{
-	String jsql = "select * from product order by p_price desc";
-	PreparedStatement pstmt = con.prepareStatement(jsql);
+<%
+} else {
+String jsql = "select * from product order by p_price desc";
+PreparedStatement pstmt = con.prepareStatement(jsql);
 
-	ResultSet rs = pstmt.executeQuery();
-
+ResultSet rs = pstmt.executeQuery();
+String jsql2 = "SELECT * FROM temp_recent WHERE m_id=? ORDER BY recent_date desc";
+PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+pstmt2.setString(1, sid);
+ResultSet rs2 = pstmt2.executeQuery();
 %>
 
 </head>
 
 <div class="frame">
+	<header>
+		<div id="header-first">
+			<form id="headerSearchForm" method="POST"
+				action="<%=request.getContextPath()%>/product?cmd=search">
+				<button class="headerSearchForm-btn">
+					<i class="tiny material-icons">search</i>
+				</button>
+				<input name="keyword" placeholder="상품명으로 검색"
+					class="headerSearchForm-input" />
+			</form>
+	</header>
 	<!-- main 타이틀 시작 -->
 	<div class="favor-head border-btm-black">상품 리스트</div>
 	<div id="product_order_list">
-		<p>
-			<a href="javascript:popular_list()">인기순</a>
-			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<form name="list" method="post" style="float: right">
+			<!--<a href="javascript:popular_list()">인기순<미구현></a>
+			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp-->
 			<a href="javascript:price_high();">높은가격</a>
 			&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
 			<a href="javascript:price_low();">낮은가격</a>
-		</p>
+		</form>
 	</div>
 	<!-- main 타이틀 끝 -->
 	<!-- sidebar 시작 -->
 	<div class="favor-sidebar">
 		<form name="categorys" method="post">
 			<div class="favor-sidebar-title">상품 옵션</div>
-			<div class=" custom-checkbox favor-content">
+			<!--<div class=" custom-checkbox favor-content">
 				<input type="checkbox" class="custom-control-input" id="notSoldout">
 				<label class="custom-control-label" for="notSoldout">품절 제외<구현중...></label>
-			</div>
+			</div> -->
 			<div class=" custom-checkbox favor-content">
 				<input type="radio" name="compList" value="상" />
 				상
@@ -164,9 +255,29 @@
 			<div class=" custom-checkbox favor-content">
 				<input type="radio" name="compList" value="default" />
 				전체보기
-			</div><br>
-		<button type="button" class="btn btn-primary" onclick="category_top()">검색</button>
+			</div>
+			<br>
+			<button type="button" class="btn btn-primary"
+				onclick="category_top()">검색</button>
 		</form>
+		<br>
+		<div class="favor-sidebar-title">최근 본 상품</div>
+		<ul class="recent">
+			<%
+			while (rs2.next()) {
+				String m_id = rs2.getString("m_id");
+				String p_id = rs2.getString("p_id");
+				String p_name = rs2.getString("p_name");
+				String recent_date = rs2.getString("recent_date");
+			%>
+			<li><a href="goods_select.jsp?p_id=<%=p_id%>">
+					<li><img src="../../img/product/<%=p_id%>.jpg" height="50px"
+							width="50px">
+				</a> &nbsp <a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a> </a></li>
+			<%
+			}
+			%>
+		</ul>
 	</div>
 </div>
 <!-- sidebar 끝 -->
@@ -210,8 +321,9 @@
 <!-- 좌측박스 끝 -->
 
 </div>
-		
-<%	}
+
+<%
+}
 } catch (Exception e) {
 out.println(e);
 }

@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/aqua_header.css?1">
+	href="${pageContext.request.contextPath}/css/aqua_header.css?v=1232">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
@@ -54,6 +54,7 @@
 <!-- Iamport -->
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	
 
 
 
@@ -78,6 +79,7 @@ String sid = (String) session.getAttribute("sid");
 		<div class="inner">
 			<h1 class="logo">
 				<a href="${pageContext.request.contextPath}/member/index.jsp">아쿠아플라넷</a>
+				
 			</h1>
 			<div class="nav_wrap">
 				<ul class="service">
@@ -90,12 +92,10 @@ String sid = (String) session.getAttribute("sid");
 									href="${pageContext.request.contextPath}/member/join/insert_member.jsp">Join</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a><%=sid%>님 환영합니다
-								</a></li>
 							<li><a
 									href="${pageContext.request.contextPath}/member/login/logout.jsp">logout</a></li>
 							<li><a
-									href="${pageContext.request.contextPath}/member/mypage/mypage.jsp">mypage</a></li>
+									href="${pageContext.request.contextPath}/member/mypage/mypage.jsp?id=<%=sid%>">mypage</a></li>
 							<li><a
 									href="${pageContext.request.contextPath}/member/order/cart_show.jsp">cart</a></li>
 						</c:otherwise>
@@ -108,18 +108,18 @@ String sid = (String) session.getAttribute("sid");
 								<span class="kor">홈</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="#">아쿠아리움 소개</a></li>
-								<li><a href="#">찾아 오시는 길</a></li>
-								<li><a href="#">이용 요금 안내</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/about_us_info.html">아쿠아리움 소개</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/about_us_road.html">찾아 오시는 길</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/about_us_cost.html">이용 요금 안내</a></li>
 							</ul></li>
 						<li><a href="#">
 								<span class="eng">Theme</span>
 								<span class="kor">테마</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="#">Theme A</a></li>
-								<li><a href="#">Theme B</a></li>
-								<li><a href="#">Theme C</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/themeA.html">Theme A</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/themeB.html">Theme B</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/themeC.html">Theme C</a></li>
 
 							</ul></li>
 						<li><a href="#">
@@ -144,7 +144,7 @@ String sid = (String) session.getAttribute("sid");
 								<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_notice.jsp">공지사항</a></li>
 							<c:choose>
 								<c:when test="${empty sid}">
-										<li><a class="btn" onClick="need_login();">개별문의 (1:1)</a></li>
+									<li><a class="btn" onClick="need_login();">개별문의 (1:1)</a></li>
 								</c:when>
 								<c:otherwise>
 									<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_qna_write.jsp">개별문의 (1:1)</a></li>

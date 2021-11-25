@@ -23,22 +23,29 @@ try {
 	pstmt.setString(1, ct_no);
 	
     pstmt.executeUpdate();
+    
+    String jsql2 = "delete from cart_t where ct_no=?";   
+	PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+	pstmt2.setString(1, ct_no);
+	
+	pstmt2.executeUpdate();
 
 	if(case_no!= null)  //  (1) 주문완료로 인한 장바구니 비우기 수행하고 난 후의 주문완료 메시지 출력
 	{                             //   orderOK.jsp의 107행 참조
 %>
 <br><br>
+<center>
 <font size=6 color=blue><b>[상품 주문 완료]</b></font><p>
 	상품 주문이 완료되었습니다.<br><br>
 	주문하신 상품은 주문 완료 후 2일 이내에 배송될 예정입니다.<br><br>
-	남서울 멀티쇼핑몰(주)을 이용해 주셔서 감사합니다!
+	AQUA (주)을 이용해 주셔서 감사합니다!
+</center>
 <%
 	}
 	  else   //  (2) 주문과 상관없이 장바구니 비우기를 수행한 경우의 출력
-	 {
-%><br><br>>
-<font color="blue" size='6'><b>[장바구니 내용 삭제]</b></font><p>
-	장바구니의 모든 내용을 삭제하였습니다.
+	 {response.sendRedirect("cart_show.jsp");    //   <jsp:forward page="showCart.jsp"/>와 같은 의미임
+%>
+
 <%
 	  }
    } catch (Exception e) {

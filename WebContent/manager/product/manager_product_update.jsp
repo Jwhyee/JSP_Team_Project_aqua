@@ -99,7 +99,7 @@ try {
 				</div>
 			</tr>
 			<tr>
-				<th>성별</th>
+				<th>옵션</th>
 				<td>
 					<%
 					String[] option_arr = p_option.split(" ");

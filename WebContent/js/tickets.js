@@ -264,27 +264,26 @@ function need_login() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 장바구니 및 즉시 구매하기
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function direct_product_order(){  //  "구매하기 버튼 클릭시"
+function direct_ticket_order(){  //  "구매하기 버튼 클릭시"
 	if (confirm('해당 상품을 구매하시겠습니까?')) {	
 			var str1=ticket.amount_adult.value;
 			var str2=ticket.amount_teen.value;
 			var str3=ticket.amount_child.value;
 			var frm = document.ticket;
-			frm.action = "../order/cart_in.jsp";
+			frm.action = "../order/cart_t_in.jsp";
 			frm.submit();
 	}
 	else {
 		document.ticket.reset();
 	}
 }
-
 function add_to_cart() {
 	if (confirm('해당 상품을 장바구니에 추가하겠습니까?')) {
 			var str1=ticket.amount_adult.value;
 			var str2=ticket.amount_teen.value;
 			var str3=ticket.amount_child.value;
 			var frm = document.ticket;
-			frm.action = "../order/cart_in.jsp";
+			frm.action = "../order/cart_t_in.jsp";
 			frm.submit();
 	}
 	else {
@@ -295,13 +294,13 @@ function add_to_cart() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 즉시 구매하기  클릭 시
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function direct_product_order()        //  "즉시구매하기" 버튼을 클릭시 호출
+function direct_ticket_order()        //  "즉시구매하기" 버튼을 클릭시 호출
 {
 	var str1=ticket.amount_adult.value;
 	var str2=ticket.amount_teen.value;
 	var str3=ticket.amount_child.value;
 	var frm = document.ticket;
-	frm.action = "../order/direct_product_order.jsp";
+	frm.action = "../order/direct_ticket_order.jsp";
 	frm.submit();
 }
 

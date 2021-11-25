@@ -133,7 +133,7 @@ String manager_id = (String) session.getAttribute("manager_id");
 										추가</a></li>
 								<li><a
 										href="${pageContext.request.contextPath}/manager/tickets/manager_tickets.jsp">티켓
-										전체 조회/수정/삭제</a></li>	
+										전체 조회/삭제</a></li>	
 							</ul>
 							</li>
 						<li><a href="#">

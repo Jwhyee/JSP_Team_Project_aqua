@@ -35,8 +35,14 @@ DecimalFormat dFormat = new DecimalFormat("###,###");		//숫자를 천단위 구
 	pstmt.setString(1, ct_no);
 
 	ResultSet rs = pstmt.executeQuery();
+	
+	String jsql6 = "select * from cart_t where ct_no = ?";
+	PreparedStatement pstmt6 = con.prepareStatement(jsql6);
+	pstmt6.setString(1, ct_no);
 
-	if (!rs.next()) // 조회 결과가 존재하지 않으면,  rs.next()는 false를 리턴함. 
+	ResultSet rs6 = pstmt6.executeQuery();
+
+	if (!rs.next() && !rs6.next()) // 조회 결과가 존재하지 않으면,  rs.next()는 false를 리턴함. 
 	{ //  따라서,  !rs.next()의 값은 true가 됨
 %>
 	<center>
@@ -110,12 +116,73 @@ DecimalFormat dFormat = new DecimalFormat("###,###");		//숫자를 천단위 구
 						
 				%>
 				<tr>
-					<td><img src="../../img/product/<%=p_id%>.jpg"width="50" height="50"></td>
-					<td><%=p_name %></td>
+					<td><a href="../product/goods_select.jsp?p_id=<%=p_id%>"><img src="../../img/product/<%=p_id%>.jpg"width="50" height="50"></a></td>
+					<td><a href="../product/goods_select.jsp?p_id=<%=p_id%>" style="color:black"><%=p_name %></a></td>
 					<td><fmt:formatNumber value="<%=p_price%>" type="number" />원</td>
 					<td><%=ct_qty %>개</td>
 					<td><fmt:formatNumber value="<%=amount%>" type="number" />원</td>
 					<td><a href="cart_delete.jsp?p_id=<%=p_id%>" class="badge badge-danger">삭제</a></td>
+				</tr>
+				<% 
+					}
+				%>
+				
+				<%
+				String jsql4 = "select t_id, ct_qty_a, ct_qty_t, ct_qty_c from cart_t where ct_no = ?";
+				PreparedStatement pstmt4 = con.prepareStatement(jsql4);
+				pstmt4.setString(1, ct_no);		
+
+				ResultSet rs4 = pstmt4.executeQuery();
+				
+				while(rs4.next()) 
+		  		{			                   
+					String t_id = rs4.getString("t_id");	//  cart_t테이블로부터 상품번호 추출
+		    		int ct_qty_a = rs4.getInt("ct_qty_a");	                //  cart_t테이블로부터 주문수량 추출 
+		    		int ct_qty_t = rs4.getInt("ct_qty_t");	
+		    		int ct_qty_c = rs4.getInt("ct_qty_c");	
+		    		
+		    		String jsql5 = "select t_name, t_price_adult, t_price_teen, t_price_child from ticket where t_id = ?";
+			    	PreparedStatement pstmt5 = con.prepareStatement(jsql5);
+				    pstmt5.setString(1, t_id);
+				    
+					ResultSet rs5 = pstmt5.executeQuery(); 
+					rs5.next();
+
+					String	t_name =  rs5.getString("t_name");	  //  goods 테이블로부터 상품명 추출
+					int t_price_adult =  rs5.getInt("t_price_adult");                 //  goods 테이블로부터 상품단가 추출
+					int t_price_teen =  rs5.getInt("t_price_teen");
+					int t_price_child =  rs5.getInt("t_price_child");
+					
+					int amount_t = (t_price_adult * ct_qty_a) + (t_price_teen * ct_qty_t) + (t_price_child * ct_qty_c);
+		    		//  주문액 계산
+		    		total = total + amount_t; 
+					//  전체 주문총액 계산
+						
+				%>
+				<tr>
+					<td><a href="../ticket/tickets_detail.jsp?t_id=<%=t_id%>"><img src="../../img/tickets/<%=t_id%>.jpg"width="50" height="50"></a></td>
+					<td>
+						<a href="../ticket/tickets_detail.jsp?t_id=<%=t_id%>"style="color:black">
+							<%=t_name %> <br>
+							&nbsp;&nbsp;- 성인(만 19세 이상)<br>
+							&nbsp;&nbsp;- 청소년(만 13세 ~ 18세)<br>
+							&nbsp;&nbsp;- 어린이(만 4세 ~ 12세)
+						</a>
+					</td>
+					<td>
+						<fmt:formatNumber value="" type="number" /><br>
+						<fmt:formatNumber value="<%=t_price_adult%>" type="number" />원<br>
+						<fmt:formatNumber value="<%=t_price_teen%>" type="number" />원<br>
+						<fmt:formatNumber value="<%=t_price_child%>" type="number" />원
+					</td>
+					<td>
+					<br>
+					<%=ct_qty_a%>개<br>
+					<%=ct_qty_t%>개<br>
+					<%=ct_qty_c%>개
+					</td>
+					<td><fmt:formatNumber value="<%=amount_t%>" type="number" />원</td>
+					<td><a href="cart_delete.jsp?t_id=<%=t_id%>" class="badge badge-danger">삭제</a></td>
 				</tr>
 				<% 
 					}

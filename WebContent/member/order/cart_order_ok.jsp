@@ -101,6 +101,36 @@ try {
 
 		pstmt3.executeUpdate();
 	}
+	
+	//티켓
+	
+	String jsql5 = "select t_id, ct_qty_a, ct_qty_t, ct_qty_c from cart_t where ct_no = ?";
+	
+	PreparedStatement pstmt5 = con.prepareStatement(jsql5);
+	pstmt5.setString(1, ct_no);
+
+	ResultSet rs5 = pstmt5.executeQuery();
+
+	//  장바구니 테이블(cart)에 있는 내역들을 읽어와서,
+	//  주문상품 테이블(ordProduct)에 주문번호(ordNo), 상품번호(prdNo), 주문수량(ordQty)을 저장시킴!
+	while (rs5.next()) // 주문상품테이블(orderProduct)에 주문번호(ordNo), 상품번호(prdNo), 
+	{ // 주문수량(ordQty)을 저장하기 위해, 장바구니테이블(cart)로부터
+		//  prdNo과 ctQty를 가져온다.
+		String t_id = rs5.getString("t_id"); //  cart테이블로부터 상품번호 추출
+		int ct_qty_a = rs5.getInt("ct_qty_a"); //  cart테이블로부터 주문수량 추출
+		int ct_qty_t = rs5.getInt("ct_qty_t");
+		int ct_qty_c = rs5.getInt("ct_qty_c");
+
+		String jsql6 = "INSERT INTO order_product (ord_no, p_id, ord_qty_a, ord_qty_t, ord_qty_c) VALUES (?,?,?,?,?)";
+		PreparedStatement pstmt6 = con.prepareStatement(jsql6);
+		pstmt6.setString(1, Integer.toString(o_num));
+		pstmt6.setString(2, t_id);
+		pstmt6.setInt(3, ct_qty_a);
+		pstmt6.setInt(4, ct_qty_t);
+		pstmt6.setInt(5, ct_qty_c);
+
+		pstmt6.executeUpdate();
+	}
 
 	//  주문정보 테이블(ordInfo)에 저장시킬 필드들을 저장 
 	String jsql4 = "INSERT INTO order_info (ord_no, m_id, ord_date, ord_receiver, ord_rcv_address, ord_rcv_phone, ord_pay, ord_bank, ord_card_no, ord_card_pass)  VALUES(?,?,?,?,?,?,?,?,?,?)";

@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@ include file="../../layout/header.jsp"%>
 <link rel = "stylesheet" href = "../../css/mypage_qna.css">
-
+<%@ include file="../../layout/mypage_header.jsp"%>
 <!--<body> -> header.jsp에 있음-->
+<!--  menu list 시작  -->
+    <section id="menu">
+		 <ul class="hbox-menu">
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_member.jsp">회원정보</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_order.jsp">구매내역</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_qna.jsp" style="color:black">문의내역</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_cart.jsp">장바구니</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_dibs.jsp">찜목록</a></li>
+	    </ul>
+	</section>
+	
 	<div align="center">
-
-		<table border="0" style="table-layout:fixed">
+	
+		<table border="0" style="font-family: 맑은 고딕; table-layout:fixed">
 			<tr id = 'mp_qna_info_title'>
 				<td align=center colspan="5">질문 내역</td>
 			</tr>
@@ -68,7 +78,7 @@
 					</a>
 				</td>
 				<td align="center">
-					<a href="mypage_qna_detail_view.jsp?qna_no=<%=qna_no1%>?m_id=<%=m_id1%>">자세히 보기</a>
+					<a href="../mypage/mypage_qna_detail_view.jsp?qna_no=<%=qna_no1%>?m_id=<%=m_id1%>">자세히 보기</a>
 				</td>
 			</tr>
 			<%

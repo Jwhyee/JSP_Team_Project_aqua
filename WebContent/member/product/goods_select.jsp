@@ -36,6 +36,68 @@ try {
 	String p_description = rs.getString("p_description");
 	int p_stock = rs.getInt("p_stock");
 	String p_option = ("p_option");
+	
+	java.util.Date date = new java.util.Date(); //   Date 타입의 객체 date 생성
+	String recent_date = date.toLocaleString(); //   변수 oDate에 현재 시각(년.월.일 시:분:초)을 저장
+	
+	String ct_no = session.getId();
+	if(sid != null){
+		String jsql3 = "SELECT * FROM temp_recent WHERE p_id = ? AND m_id = ?";
+		PreparedStatement pstmt3 = con.prepareStatement(jsql3);
+		pstmt3.setString(1,p_id);
+		pstmt3.setString(2,sid);
+		ResultSet rs3 = pstmt3.executeQuery();
+		
+		if(!rs3.next()){
+			String jsql2 = "INSERT INTO temp_recent (p_id, p_name, m_id, recent_date) VALUES (?,?,?,?)";
+			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+			pstmt2.setString(1, p_id);
+			pstmt2.setString(2, p_name);
+			pstmt2.setString(3, sid);
+			pstmt2.setString(4, recent_date);
+			
+			pstmt2.executeUpdate();
+		}
+		else{
+			String jsql2 = "UPDATE temp_recent SET recent_date =? WHERE p_id = ?";
+			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+			pstmt2.setString(1, recent_date);
+			pstmt2.setString(2, p_id);
+			
+			pstmt2.executeUpdate();
+		}
+	}
+	
+	else{
+		String jsql3 = "SELECT * FROM temp_recent WHERE p_id = ? AND ct_no = ?";
+		PreparedStatement pstmt3 = con.prepareStatement(jsql3);
+		pstmt3.setString(1,p_id);
+		pstmt3.setString(2,ct_no);
+		ResultSet rs3 = pstmt3.executeQuery();
+		
+		if(!rs3.next()){
+			String jsql2 = "INSERT INTO temp_recent (p_id, p_name, m_id, recent_date, ct_no) VALUES (?,?,?,?,?)";
+			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+			pstmt2.setString(1, p_id);
+			pstmt2.setString(2, p_name);
+			pstmt2.setString(3, sid);
+			pstmt2.setString(4, recent_date);
+			pstmt2.setString(5, ct_no);
+			
+			pstmt2.executeUpdate();
+		}
+		else{
+			String jsql2 = "UPDATE temp_recent SET recent_date =? WHERE ct_no = ? AND p_id = ?";
+			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+			pstmt2.setString(1, recent_date);
+			pstmt2.setString(2, ct_no);
+			pstmt2.setString(3, p_id);
+			
+			pstmt2.executeUpdate();
+		}
+	}
+	
+	
 %>
 </head>
 
@@ -141,6 +203,9 @@ try {
 						<button type="button" class="cart-btn" onclick="need_login();">
 							<i class="material-icons">shopping_cart</i>
 						</button>
+						<button type="button" class="fav-btn" onclick="need_login();">
+							<i class="material-icons">favorite</i>
+						</button>
 					</c:when>
 					<c:otherwise>
 						<button type="button" class="buy-btn"
@@ -148,7 +213,28 @@ try {
 						<button type="button" class="cart-btn" onclick="add_to_cart()">
 							<i class="material-icons">shopping_cart</i>
 						</button>
-
+						<%
+							String jsql4 = "SELECT * FROM dibs WHERE p_id = ? AND m_id = ? ";
+							PreparedStatement pstmt4 = con.prepareStatement(jsql4);
+							pstmt4.setString(1,p_id);
+							pstmt4.setString(2,sid);
+							ResultSet rs4 = pstmt4.executeQuery();
+							
+							if(rs4.next()){
+								
+						%>
+							<button type="button" class="fav-btn" onclick="rmv_to_dibs();">
+								<i class="material-icons">favorite_border</i>
+							</button>
+						<%
+							}else{
+						%>
+							<button type="button" class="fav-btn" onclick="add_to_dibs();">
+								<i class="material-icons" style="color: red;">favorite_border</i>
+							</button>
+						<%
+							}
+						%>
 					</c:otherwise>
 				</c:choose>
 </form>

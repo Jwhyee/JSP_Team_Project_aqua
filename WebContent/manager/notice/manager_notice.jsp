@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="../../layout/header_manager.jsp" %>
-<link rel="stylesheet" href="../../css/about_us_style.css?abc">
+<link rel="stylesheet" href="../../css/about_us_style.css">
 
 	<div align="center">
 		<font color="blue" size='6'><b>[전체 공지 조회]</b></font>
 		<p><br><br>
 		<table id = 'manager_n_sel_table' border="1" width=1000 style="font-size: 10pt; font-family: 맑은 고딕; table-layout:fixed">
 			<tr>
-				<td id = 'manager_n_sel_title'>공지번호</td>
-				<td id = 'manager_n_sel_title'>매니저 아이디</td>
-				<td id = 'manager_n_sel_title'>공지 작성일</td>
-				<td id = 'manager_n_sel_title'>공지 제목</td>
-				<td id = 'manager_n_sel_title'>공지 내용</td>
+				<td id = 'manager_n_sel_title' width = 70>공지번호</td>
+				<td id = 'manager_n_sel_title' width = 130>매니저 아이디</td>
+				<td id = 'manager_n_sel_title' width = 100>공지 작성일</td>
+				<td id = 'manager_n_sel_title' width = 250>공지 제목</td>
+				<td id = 'manager_n_sel_title' width = 300>공지 내용</td>
 				<td id = 'manager_n_sel_title'>
 					<b><font color=blue>[수정]</font></b>
 				</td>
@@ -41,7 +41,7 @@
 					String notice_title = rs.getString("notice_title");
 					String notice_content = rs.getString("notice_content");
 			%>
-			<tr>
+			<tr height=50>
 				<td align="center">
 					<%=notice_no%>
 				</td>
@@ -51,10 +51,10 @@
 				<td align="center">
 					<%=notice_date%>
 				</td>
-				<td align="center" style="text-overflow:ellipsis; overflow:hidden">
+				<td align="center" style="padding : 10px; text-overflow:ellipsis; white-space : nowrap; overflow:hidden;">
 					<%=notice_title%>
 				</td>
-				<td align="center" width=300 height=20 style="text-overflow:ellipsis; overflow:hidden">
+				<td align="center" width=300 height=20 style="padding : 10px; text-overflow:ellipsis; white-space : nowrap; overflow:hidden;">
 					<%=notice_content%>
 				</td>
 				<td>

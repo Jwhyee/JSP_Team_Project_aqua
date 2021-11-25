@@ -26,6 +26,16 @@
 	font-weight : lighter;
 	line-height : 100px;
 }
+#mp_qna_detail_list_btn{
+	font-size : 15px;
+	line-height : 15px;
+	color : white;
+	background-color : #2535C7;
+	float:right;
+	border : none;
+	width : 110px;
+	height : 35px;
+}
 #mp_qna_detail_title{
 	border-top : 2px solid black;
 	border-bottom : 1px solid #ccc;

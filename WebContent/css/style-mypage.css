@@ -34,10 +34,12 @@
 	display: table;
 	overflow: hidden;
 	text-align: center;
+	border:0;
+	outline:0;
 }
 
 .hbox-menu li {
-	width: 25%;
+	width: 20%;
 	display: inline-block;
 	border:0;
 	outline:0;

@@ -7,7 +7,7 @@
             </div>
             <div class="box contact">
                 <p><i class="fas fa-phone-alt"></i><span class="txt">32-326-9500 (단체문의 : 032-326-9503)</span></p>
-                <p><i class="fas fa-street-view"></i><span class="txt">서울특별시 강남구 영동대로 513 코엑스아쿠아리움 </span></p>
+                <p><i class="fas fa-street-view"></i><span class="txt">서울특별시 성북구 삼선동5가 298-10  </span></p>
                 <p><i class="fas fa-clock"></i><span class="txt">Mon–Sat: 10:00am–8:00pm</span></p>
             </div>
             <div class="box sns">

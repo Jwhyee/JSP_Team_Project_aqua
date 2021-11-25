@@ -1,62 +1,104 @@
 table {
-  border-collapse: collapse;
-  text-align: left;
-  line-height: 1.5;
-  margin: 20px 10px;
-  font-size: 10px;
+	text-align: left;
+	line-height: 1.5;
+	margin: 20px 10px;
+	font-size: 10px;
+}
+
+table, td, th, tr {
+	border-collapse: collapse;
 }
 
 table thead tr th {
-  padding: 10px;
-  font-weight: bold;
-  border-top: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: 2px solid #c00;
-  background: #dcdcd1;
-  text-align: center;
-  font-size: 12px
+	padding: 10px;
+	font-weight: bold;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 2px solid #c00;
+	background: #dcdcd1;
+	text-align: center;
+	font-size: 12px
 }
 
 table tbody tr th {
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  background: #ececec;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 12px
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background: #ececec;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 12px
 }
 
 table tr td {
-  padding: 10px;	
-  vertical-align: top;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 12px;
+	padding: 10px;
+	vertical-align: top;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 12px;
 }
 
-.detail th{
+.detail th {
 	border-bottom: 1px solid #ccc;
-	border-left: 1px solid ;
-	border-right: 1px solid ;
-		vertical-align: middle;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	vertical-align: middle;
 	text-align: center;
 }
 
-.detail td{
-	width:300px;
+.detail td {
+	width: 300px;
 	vertical-align: middle;
 	text-align: center;
 	border-bottom: 1px solid #ccc;
-	
 }
 
-.none{
-	border-left:none;
-	border-right:none;
-	
+.none {
+	border-left: none;
+	border-right: none;
 }
+
+.p_img {
+	padding: 0px;
+}
+
+ul.mylist, ol.mylist {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    max-width: 900px;
+    width: 100%;
+}
+
+  
+ul.mylist li, ol.mylist li {
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #efefef;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+ul.mylist li, ol.mylist li {
+	-webkit-transition: background-color 0.3s linear;
+	-moz-transition: background-color 0.3s linear;
+	-ms-transition: background-color 0.3s linear;
+	-o-transition: background-color 0.3s linear;
+	transition: background-color 0.3s linear;
+}
+ul.mylist li a{
+	color:black;
+}
+ol.mylist li a{
+	color:black;
+}
+
+ul.mylist li:hover, ol.mylist li:hover {
+	background-color: #f6f6f6;
+}
+

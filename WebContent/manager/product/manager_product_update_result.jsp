@@ -148,7 +148,7 @@ try {
 					</c:when>
 					<c:otherwise>
 						<button type="button" class="update-delete-btn" onclick="location.href='manager_product_update.jsp?p_id=<%=p_id%>' ">재수정</button>
-						<button type="button" class="update-delete-btn" onclick="location.href='manager_product_ticket_select.jsp' ">전체 상품 보기
+						<button type="button" class="update-delete-btn" onclick="location.href='manager_product_select.jsp' ">전체 상품 보기
 				
 						</button>
 					</c:otherwise>
