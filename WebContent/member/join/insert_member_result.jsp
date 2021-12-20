@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ include file="../../layout/header.jsp" %>
-<link rel="stylesheet" type="text/css" href="../../css/style-table.css">
+<link rel="stylesheet" type="text/css" href="../../css/table_style_ver2.css">
 <center>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -59,12 +59,11 @@ try {
 		out.println(e);
 }
 %>
-<center>
-    <h3> 축하합니다.  다음과 같이 회원 가입되었습니다! </h3><p>
-	<br><br>
-	<font color="" size='6'><b>[회원 가입 내역]</b></font><p>
-
-	<table border=1 cellpadding=5  style="font-size:10pt;font-family:맑은 고딕">
+<div align=center>
+	<table style="font-size:10pt;font-family:맑은 고딕">
+	<tr>
+		<th colspan="2" class="table_title">회원 가입 완료</th>
+	</tr>
 	<tr>
 		<th width=100>ID</th>
 		<td width=200><%=id%></td>
@@ -104,7 +103,7 @@ try {
 	<p>
 <br>
  <a href="../login/login.jsp" style="font-size:10pt;font-family:맑은 고딕" >로그인</a>
- </center>
+ </div>
 <%@ include file="../../layout/footer.jsp"%>
 </body>
 </html>

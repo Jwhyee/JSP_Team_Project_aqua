@@ -4,9 +4,6 @@
 <%@ include file="../../layout/header_manager.jsp"%>
 <link rel="stylesheet" type="text/css" href="../../css/style-table.css?v=123">
 
-
-
-</body>
 <%
 try {
 	String DB_URL = "jdbc:mysql://localhost:3306/aqua_project";

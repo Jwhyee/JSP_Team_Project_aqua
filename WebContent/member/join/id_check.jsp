@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=euc-kr" %>
-<%@ page import="java.sql.*" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
 
 <%
 boolean isExist = false;
@@ -20,9 +20,9 @@ try {
 
 	    ResultSet rs = pstmt.executeQuery();  	
         
-        if(rs.next())              //   ·¹ÄÚµå(µ¿ÀÏÇÑ ID)°¡ Á¸ÀçÇÏ¸é
+        if(rs.next())              //   ë ˆì½”ë“œ(ë™ì¼í•œ ID)ê°€ ì¡´ìž¬í•˜ë©´
               isExist = true;
-        else                          //   ·¹ÄÚµå(µ¿ÀÏÇÑ ID)°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é  
+        else                          //   ë ˆì½”ë“œ(ë™ì¼í•œ ID)ê°€ ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë©´  
              isExist = false;
 
     } catch (Exception e) {
@@ -32,12 +32,12 @@ try {
 
 <html>
 <head>
-<title>»ç¿ëÀÚ ID Áßº¹ °Ë»ç</title>
+<title>ì‚¬ìš©ìž ID ì¤‘ë³µ ê²€ì‚¬</title>
 </head>
 
 <body bgcolor="#ffffff">
 <br>
-<table width="228" border="0" cellspacing="1" cellpadding="3" height="50" style="font-size:10pt;font-family:¸¼Àº °íµñ">
+<table width="228" border="0" cellspacing="1" cellpadding="3" height="50" style="font-size:10pt;font-family:ë§‘ì€ ê³ ë”•">
     <tr>
         <td height="25" align=center >
           ID:  <%=request.getParameter("id")%>
@@ -47,17 +47,26 @@ try {
     <tr>
         <td height="25" align=center>
   <%  
-		   if(isExist)  
-                 out.println("ÀÌ¹Ì Á¸ÀçÇÏ´Â IDÀÔ´Ï´Ù.");
-	       else 
-                 out.println("»ç¿ë °¡´ÉÇÑ IDÀÔ´Ï´Ù. ");
+		   if(isExist)  {
+                 out.println("ì´ë¯¸ ì¡´ìž¬í•˜ëŠ” IDìž…ë‹ˆë‹¤.");
+  			%>
+  			<tr>
+		        <td align=center>
+		            <a href="javascript:window.close()">ë‹¤ë¥¸ ID ì‚¬ìš©í•˜ê¸°</a>
+		        </td>
+		    </tr>
+  			<%
+		   }else{
+                 out.println("ì‚¬ìš© ê°€ëŠ¥í•œ IDìž…ë‹ˆë‹¤. ");
+  			%>
+  			<tr>
+		        <td align=center>
+		            <a href="javascript:window.close()">ì‚¬ìš©í•˜ê¸°</a>
+		        </td>
+		    </tr>
+  			<%
+		   }
   %>
-        </td>
-    </tr>
-
-    <tr>
-        <td align=center>
-            <a href="javascript:window.close()"><img src=".\images\confirm.gif" border=0></a>
         </td>
     </tr>
 </table>

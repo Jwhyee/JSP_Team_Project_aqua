@@ -38,7 +38,7 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!-- End of Script -->
-<script language="javascript" src="../../js/js_package.js">
+<script language="javascript" src="../../js/js_package.js?a">
 	
 </script>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -49,9 +49,9 @@
 			<h2 class="form-signin-heading  text-center">관리자 로그인</h2>
 			<br>
 			<input type="text" class="form-control" placeholder="아이디"
-				name="id">
+				name="id" onkeyup="press()">
 			<input type="password" class="form-control" placeholder="비밀번호"
-				name="pass" onkeydown="onEnterSubmit()">
+				name="pass" onkeyup="press()">
 			<div class="text-center">
 				<a href="javascript:login_check()">
 					<button class="btn btn-large btn-primary" type="button">로그인</button>

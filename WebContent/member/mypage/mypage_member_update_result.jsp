@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import = "java.sql.*" %>
 <%@ include file="../../layout/mypage_header.jsp"%>
-<link rel="stylesheet" type="text/css" href="../../css/style-table.css?v=123">
+<link rel="stylesheet" type="text/css" href="../../css/table_style_ver2.css?v=123">
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -62,11 +62,11 @@ try {
 
 %>
 <center>
-	<font  size='6'>
-		<b>[회원 상세정보 조회] </b>
-	</font>
 
-	<table border=1 cellpadding=5   style="font-size:10pt;font-family:맑은 고딕" class="detail">
+	<table style="font-size:10pt;font-family:맑은 고딕" class="detail">
+	<tr>
+		<th colspan="2" class="table_title">정보 수정 결과</th>
+	</tr>
 	<tr>
 		<th>ID</th>
 		<td><%=id%></td>
@@ -109,7 +109,7 @@ try {
 	</table>
 	<p>
 <br>
- <a href="mypage.jsp" style="font-size:10pt;font-family:맑은 고딕" >mypage로 돌아가기</a>
+ <a href="mypage.jsp" style="font-size:10pt;font-family:맑은 고딕; color : white; border : none;" class ="btn btn-large btn-primary" >돌아가기</a>
  </center>
  <%} catch(Exception e) { 
 		out.println(e);

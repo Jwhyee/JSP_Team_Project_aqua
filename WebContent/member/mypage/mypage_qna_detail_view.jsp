@@ -10,8 +10,12 @@
 				<td colspan = "3" width = "700">QnA</td>
 			</tr>
 			<tr>
-				<td colspan='2' style = "border-top : none;">
+				<td colspan='3' style = "border-top : none;">
 					<input id = "mp_qna_detail_list_btn" type="button" value = "목록 보기" onClick="location.href='mypage_qna.jsp'">
+				</td>
+			</tr>
+			<tr>
+				<td colspan='3' style = "border-top : none;">
 				</td>
 			</tr>
 			<%
@@ -23,7 +27,9 @@
 				Class.forName("org.gjt.mm.mysql.Driver");
 				Connection con = DriverManager.getConnection(DB_URL, DB_ID, DB_PASSWORD);
 				
+				request.setCharacterEncoding("utf-8");
 				String key = request.getParameter("qna_no");
+				String p_id = request.getParameter("p_id");
 
 				String jsql = "SELECT * FROM qna, qna_answer where qna_no = ? and qna_ref_no = ?";
 				PreparedStatement pstmt = con.prepareStatement(jsql);

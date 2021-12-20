@@ -45,6 +45,7 @@
 			</tr>
 			<tr>
 				<td name ="notice_content"id = 'abu_notice_detail_content' align="center" colspan='2'>
+					<img src="../../img/notice/<%=notice_no%>.jpeg" width = 800>
 					<%=notice_content%>
 				</td>
 			</tr>

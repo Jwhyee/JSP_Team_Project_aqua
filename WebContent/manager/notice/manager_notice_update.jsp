@@ -54,7 +54,7 @@
 				<tr>
 					<td id = 'manager_n_up_title'>수정일</td>
 					<td>
-						<input type=text name="notice_date_year" value="<%= sf.format(nowTime) %>" readonly>
+						<input type=text name="notice_date" value="<%= sf.format(nowTime) %>" readonly>
 					</td>
 				</tr>
 				<tr>

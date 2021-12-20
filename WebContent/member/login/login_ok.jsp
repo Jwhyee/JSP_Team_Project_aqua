@@ -29,7 +29,7 @@
 	if (rs.next()) {
 		if (pass.equals(rs.getString("m_password"))) {
 			session.setAttribute("sid", id);
-			response.sendRedirect("../index.jsp");
+			response.sendRedirect("../../index.jsp");
 
 		} else {
 	%>
@@ -50,7 +50,7 @@
 				를 클릭하시고,
 			<p>
 				메인 페이지로 돌아가시려면
-				<a href="../index.html">여기</a>
+				<a href="../../index.jsp">여기</a>
 				를 클릭하세요!
 		</font>
 		<%
@@ -73,7 +73,7 @@
 				를 클릭하시고,
 			<p>
 				메인 페이지로 돌아가시려면
-				<a href="../index.jsp">여기</a>
+				<a href="../../index.jsp">여기</a>
 				를 클릭하세요!
 		</font>
 

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -9,14 +8,12 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/aqua_header_manager.css?v=115">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/aqua_header_manager.css?v=115">
 
 
 
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/gnb.js"></script>
 <script src="${pageContext.request.contextPath}/js/tab-ex-1.js"></script>
@@ -24,39 +21,28 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- material icon -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- jquery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- bootstrap -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- joinForm icons -->
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <!-- swiper-wrapper script -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <!-- summernote css/js -->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <!-- sweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- Iamport -->
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!-- End of Script -->
 
 
@@ -70,11 +56,13 @@ String manager_id = (String) session.getAttribute("manager_id");
 		<title>aqua</title>
 	</c:when>
 	<c:otherwise>
-		<title><%=manager_id %>매니저님 환영합니다</title>
+		<title><%=manager_id %>매니저님 환영합니다
+		</title>
 	</c:otherwise>
 </c:choose>
 
 </head>
+
 
 <body>
 
@@ -82,81 +70,98 @@ String manager_id = (String) session.getAttribute("manager_id");
 		<div class="bg_gnb"></div>
 		<div class="inner">
 			<h1 class="logo">
-				<a href="${pageContext.request.contextPath}/member/index.jsp">아쿠아플라넷</a>
+				<a href="${pageContext.request.contextPath}/index.jsp">아쿠아플라넷</a>
 			</h1>
 			<div class="nav_wrap">
 				<ul class="service">
 					<c:choose>
 						<c:when test="${empty manager_id}">
-							<li><a>로그인이 필요합니다.</a></li>
-							<li><a
-									href="${pageContext.request.contextPath}/manager/login/manager_login.jsp">loign</a></li>
+							<li>
+								<a>로그인이 필요합니다.</a>
+							</li>
+							<li>
+								<a href="${pageContext.request.contextPath}/manager/login/manager_login.jsp">loign</a>
+							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a><%=manager_id%>
+							<li>
+								<a><%=manager_id%>
 									매니저님 환영합니다
-								</a></li>
-							<li><a
-									href="${pageContext.request.contextPath}/member/login/logout.jsp">logout</a></li>
+								</a>
+							</li>
+							<li>
+								<a href="${pageContext.request.contextPath}/member/login/logout.jsp">logout</a>
+							</li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
 				<nav class="gnb_wrap">
 					<ul class="gnb">
-						<li><a
-								href="${pageContext.request.contextPath}/manager/member/manager_member.jsp">
+						<li>
+							<a href="#">
 								<span class="eng">member</span>
 								<span class="kor">회원관리</span>
 							</a>
 							<ul class="submenu">
-								<li><a
-										href="${pageContext.request.contextPath}/manager/member/insert_member.jsp">신규
-										회원 등록</a></li>
-								<li><a
-										href="${pageContext.request.contextPath}/manager/member/manager_member_select.jsp">전체회원
-										조회/수정/삭제</a></li>
-							</ul></li>
-						<li><a
-								href="${pageContext.request.contextPath}/manager/manager_product.jsp">
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/member/insert_member.jsp">신규 회원 등록</a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/member/manager_member_select.jsp">전체회원 조회/수정/삭제</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
 								<span class="eng">product/ticket</span>
 								<span class="kor">상품 및 티켓</span>
 							</a>
 							<ul class="submenu">
-								<li><a
-										href="${pageContext.request.contextPath}/manager/product/manager_product_insert.jsp">상품
-										추가</a></li>
-								<li><a
-										href="${pageContext.request.contextPath}/manager/product/manager_product_select.jsp">상품
-										전체 조회/수정/삭제</a></li>
-								<li><a
-										href="${pageContext.request.contextPath}/manager/tickets/manager_tickets_insert.jsp">티켓
-										추가</a></li>
-								<li><a
-										href="${pageContext.request.contextPath}/manager/tickets/manager_tickets.jsp">티켓
-										전체 조회/삭제</a></li>	
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/product/manager_product_insert.jsp">상품 추가</a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/product/manager_product_select.jsp">상품 전체 조회/수정/삭제</a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/tickets/manager_tickets_insert.jsp">티켓 추가</a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/tickets/manager_tickets.jsp">티켓 전체 조회/삭제</a>
+								</li>
 							</ul>
-							</li>
-						<li><a href="#">
+						</li>
+						<li>
+							<a href="#">
 								<span class="eng">order</span>
 								<span class="kor">주문관리</span>
 							</a>
 							<ul class="submenu">
-								<li><a
-										href="${pageContext.request.contextPath}/manager/order/manager_order_select.jsp">주문
-										전체 보기</a></li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/order/manager_order_select.jsp">주문 전체 보기</a>
+								</li>
 
-								<li><a href="#">후기 게시판</a></li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/order/manager_review.jsp">리뷰 게시판</a>
+								</li>
 
-							</ul></li>
-						<li><a href="#">
+							</ul>
+						</li>
+						<li>
+							<a href="#">
 								<span class="eng">notice</span>
 								<span class="kor">문의사항</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="${pageContext.request.contextPath}/manager/notice/manager_notice.jsp">공지사항 조회/수정/삭제</a></li>
-								<li><a href="${pageContext.request.contextPath}/manager/qna/manager_qna.jsp">개별문의 조회/수정/삭제</a></li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/notice/manager_notice.jsp">공지사항 조회/수정/삭제</a>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/manager/qna/manager_qna.jsp">개별문의 조회/수정/삭제</a>
+								</li>
 
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 				</nav>
 			</div>

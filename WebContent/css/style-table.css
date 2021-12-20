@@ -99,6 +99,10 @@ ol.mylist li a{
 }
 
 ul.mylist li:hover, ol.mylist li:hover {
-	background-color: #f6f6f6;
+	background-color: #007bff;
+}
+ul.mylist li:hover a, ol.mylist li:hover a{
+	color: #fff;
+	text-decoration : none;
 }
 

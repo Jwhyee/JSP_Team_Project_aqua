@@ -29,19 +29,19 @@
 			<th>카테고리분류 :  </th>
 			<td>		
 			     <select name="ctg">
-			        <option value="상">상</option>
-	        		<option value="중">중</option>
-			        <option value="하">하</option>
+			        <option value="아쿠아리움관">아쿠아리움관</option>
+	        		<option value="파충류관">파충류관</option>
+			        <option value="정글존">정글존 </option>
 		         </select><p>
 			 </td>
 		</tr>
 		<tr>
 			<th>옵션 : </th>
 			<td>
-				<input type=checkbox name="option" value="1">&nbsp1&nbsp
-				<input type=checkbox name="option" value="2">&nbsp2&nbsp
-				<input type=checkbox name="option" value="3">&nbsp3&nbsp
-				<input type=checkbox name="option" value="4">&nbsp4
+				<input type=checkbox name="option" value="1">&nbsp;1&nbsp;&nbsp;
+				<input type=checkbox name="option" value="2">&nbsp;2&nbsp;&nbsp;
+				<input type=checkbox name="option" value="3">&nbsp;3&nbsp;&nbsp;
+				<input type=checkbox name="option" value="4">&nbsp;4&nbsp;
 			</td>
 		</tr>	
 		<tr>

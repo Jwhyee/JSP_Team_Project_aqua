@@ -3,6 +3,20 @@ var addressInfoOn = false;
 $("#realInfo-box").hide();
 $("#addressInfo-box").hide();
 
+function jalert(msg){
+	$("#alertBox").dialog({
+		open: $("#alertBox").text(msg),
+		title: "확인",
+		autoOpen: true,
+		modal: true,
+		buttons: {
+			OK: function () {
+			$("#alertBox").dialog("close");
+			}
+		}
+	});
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  이미지 스크롤 등 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,8 +57,7 @@ function addressInfoBox() {
 
 var tab1 = $("#detail-img-text-box").offset().top - 100;
 var tab2 = $("#detail-review-box").offset().top - 100;
-var tab3 = $("#detail-qna-box").offset().top - 100;
-var tab4 = $("#detail-purchaseInfo-box").offset().top - 100;
+var tab3 = $("#detail-purchaseInfo-box").offset().top - 100;
 
 
 $(window).on("scroll", function() {
@@ -71,16 +84,6 @@ $(window).on("scroll", function() {
 	if (nowY > tab3) {
 		$("#tab-review").css('border-bottom', '4px solid #f2f2f2');
 		$("#tab-review-a").css('color', '#9a9a9e');
-		$("#tab-qna").css('border-bottom', '4px solid black');
-		$("#tab-qna-a").css('color', 'black');
-	} else {
-		$("#tab-qna").css('border-bottom', '4px solid #f2f2f2');
-		$("#tab-qna-a").css('color', '#9a9a9e');
-	}
-
-	if (nowY > tab4) {
-		$("#tab-qna").css('border-bottom', '4px solid #f2f2f2');
-		$("#tab-qna-a").css('color', '#9a9a9e');
 		$("#tab-purchaseInfo").css('border-bottom', '4px solid black');
 		$("#tab-purchaseInfo-a").css('color', 'black');
 	} else {
@@ -91,19 +94,15 @@ $(window).on("scroll", function() {
 
 $("#tab-img-text-a").click(function(event) {
 	event.preventDefault();
-	$('html,body').animate({ scrollTop: tab1 + 10 }, 1000);
+	$('html,body').animate({ scrollTop: tab1 }, 1000);
 });
 $("#tab-review-a").click(function(event) {
 	event.preventDefault();
-	$('html,body').animate({ scrollTop: tab2 + 10 }, 1000);
-});
-$("#tab-qna-a").click(function(event) {
-	event.preventDefault();
-	$('html,body').animate({ scrollTop: tab3 + 10 }, 1000);
+	$('html,body').animate({ scrollTop: tab2 }, 1000);
 });
 $("#tab-purchaseInfo-a").click(function(event) {
 	event.preventDefault();
-	$('html,body').animate({ scrollTop: tab4 + 10 }, 1000);
+	$('html,body').animate({ scrollTop: tab3 }, 1000);
 });
 
 
@@ -117,16 +116,32 @@ var amount;
 function init() {
 	sell_price = document.product.sell_price.value;
 	amount = document.product.amount.value;
+	stock = document.product.stock.value;
 	document.product.sum.value = sell_price;
 	change();
 }
 
 function add() {
-	hm = document.product.amount;
-	sum = document.product.sum;
-	hm.value++;
 
-	sum.value = parseInt(hm.value) * sell_price;
+	if(parseInt(hm.value) < stock){
+		hm = document.product.amount;
+		sum = document.product.sum;
+		hm.value++;
+		sum.value = parseInt(hm.value) * sell_price;
+	}
+	else{
+		swal({
+		  title: "경고 메시지",
+		  text: "최대 수량입니다. 다시 선택해주세요!",
+		  icon: "warning",
+		  buttons: {
+			text: "예",	
+			cancel: "아니요",
+		 },
+		  dangerMode: true,
+		})
+
+	}
 }
 
 function del() {
@@ -174,39 +189,53 @@ function need_login() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 장바구니 및 즉시 구매하기
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function direct_product_order(){  //  "구매하기 버튼 클릭시"
-	if (confirm('해당 상품을 구매하시겠습니까?')) {	
-			var str=product.amount.value;
-			var frm = document.product;
-			frm.action = "../order/cart_in.jsp";
-			frm.submit();
-	}
-	else {
-		document.product.reset();
-	}
+function direct_product_order() {  //  "구매하기 버튼 클릭시"
+	swal({
+	  title: "즉시 구매",
+	  text: "해당 상품을 구매하시겠습니까?",
+	  icon: "info",
+	  buttons: {
+		text: "예",	
+		cancel: "아니요",
+	 },
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+		var str=product.amount.value;
+		var frm = document.product;
+		frm.action = "../order/direct_product_order.jsp";
+		frm.submit();
+	  } else {
+	    swal.close();
+	  }
+	});
 }
 
 function add_to_cart() {
-	if (confirm('해당 상품을 장바구니에 추가하겠습니까?')) {
-			var str=product.amount.value;
-			var frm = document.product;
-			frm.action = "../order/cart_in.jsp";
-			frm.submit();
-	}
-	else {
-		document.product.reset();
-	}
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 즉시 구매하기  클릭 시
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function direct_product_order()        //  "즉시구매하기" 버튼을 클릭시 호출
-{
-	var str=product.amount.value;
-	var frm = document.product;
-	frm.action = "../order/direct_product_order.jsp";
-	frm.submit();
+	swal({
+	  title: "장바구니 추가",
+	  text: "장바구니에 추가 됐습니다. 이동하시겠습니까?",
+	  icon: "success",
+	  buttons: {
+	  text: "예",	
+	  cancel: "아니요",
+	 },
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+		var str = product.amount.value;
+		var frm = document.product;
+		frm.action = "../order/cart_in.jsp";
+		frm.submit();
+	  } else {
+	   	var str = product.p_id.value;
+		var frm = document.product;
+		frm.action = "../order/cart_in_temp.jsp";
+		frm.submit();
+	  }
+	});
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -214,32 +243,55 @@ function direct_product_order()        //  "즉시구매하기" 버튼을 클릭
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function add_to_dibs() {
-	if (confirm('찜목록에 추가 됐습니다. 바로 이동하시겠습니까??')) {
-		var str=product.p_id.value;
+	swal({
+	  title: "찜목록 추가",	
+	  text: "찜목록에 추가 됐습니다. 바로 이동하시겠습니까?",
+	  icon: "success",
+	  buttons: {
+		text: "예",	
+		cancel: "아니요",
+	 },
+	  dangerMode: true,
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+		var str = product.p_id.value;
 		var frm = document.product;
 		frm.action = "../dibs/dibs_in_direct.jsp";
 		frm.submit();
-	}
-	else {
-		var str=product.p_id.value;
+	  } else {
+	    var str = product.p_id.value;
 		var frm = document.product;
 		frm.action = "../dibs/dibs_in.jsp";
 		frm.submit();
-	}
+	  }
+	});
 }
 
 function rmv_to_dibs() {
-	if (confirm('해당 상품을 찜목록에서 삭제하시겠습니까?')) {
-			var str=product.p_id.value;
-			var frm = document.product;
-			frm.action = "../dibs/dibs_in.jsp";
-			frm.submit();
-			
-	}
-	else {
+	swal({
+	  title: "찜목록 삭제",
+	  text: "찜목록에서 삭제 됐습니다",
+	  icon: "warning",
+	  buttons: {
+		text: "확인",	
+	 },
+	})
+	.then((willDelete) => {
+	  if (willDelete) {
+		var str = product.p_id.value;
+		var frm = document.product;
+		frm.action = "../dibs/dibs_in.jsp";
+		frm.submit();
+	  } else {
 		document.product.reset();
-	}
+	  }
+	});
+	
+	
 }
+
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -249,54 +301,84 @@ function rmv_to_dibs() {
 
 function check_val()             // 주문서의 미입력항목 부분을 체크하는 자바스크립트 함수
 {
-	if (document.form.memTel.value == "") 
-	{
-		alert("주문자 전화번호는 반드시 기입을 해야 합니다. ");
+	if (document.form.memTel.value == "") {
+		swal("주문자 전화번호는 반드시 기입을 해야 합니다. ");
 		document.form.memTel.focus();
-		return false;			
-	}			
+		return false;
+	}
 
-	if (document.form.receiver.value == "") 
-	{
-		alert("수령인 성명은 반드시 기입을 해야 합니다. ");
+	if (document.form.receiver.value == "") {
+		swal("수령인 성명은 반드시 기입을 해야 합니다. ");
 		document.form.receiver.focus();
-		return false;			
+		return false;
 	}
 
-	if (document.form.rcvAddress.value == "") 
-	{
-		alert("수령인 주소는 반드시 기입을 해야 합니다. ");
+	if (document.form.rcvAddress.value == "") {
+		swal("수령인 주소는 반드시 기입을 해야 합니다. ");
 		document.form.rcvAddress.focus();
-		return false;			
+		return false;
 	}
 
-	if (document.form.rcvPhone.value == "") 
-	{
-		alert("수령인 전화번호는 반드시 기입을 해야 합니다. ");
+	if (document.form.rcvPhone.value == "") {
+		swal("수령인 전화번호는 반드시 기입을 해야 합니다. ");
 		document.form.rcvPhone.focus();
-		return false;			
-	}
- 
-	if (document.form.cardNo.value == "" && document.form.bank.value == 0 ) 
-	{
-		alert("결제방법 중 하나는 선택해야 합니다. ");
-		document.form.cardNo.focus();
-		return false;			
+		return false;
 	}
 
-    	if (document.form.cardNo.value != "" && document.form.bank.value != 0 ) 
-	{
-		alert("결제방법 중 하나만 선택해야 합니다. ");
+	if (document.form.cardNo.value == "" && document.form.bank.value == 0) {
+		swal("결제방법 중 하나는 선택해야 합니다. ");
 		document.form.cardNo.focus();
-		return false;			
+		return false;
 	}
 
-	if (document.form.cardNo.value != "" && document.form.cardPass.value == "" ) 
-	{
-		alert("카드 비밀번호는 반드시 기입을 해야 합니다. ");
+	if (document.form.cardNo.value != "" && document.form.bank.value != 0) {
+		swal("결제방법 중 하나만 선택해야 합니다. ");
 		document.form.cardNo.focus();
-		return false;			
+		return false;
 	}
 
-   	document.form.submit();
+	if (document.form.cardNo.value != "" && document.form.cardPass.value == "") {
+		swal("카드 비밀번호는 반드시 기입을 해야 합니다. ");
+		document.form.cardNo.focus();
+		return false;
+	}
+
+	document.form.submit();
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 품절 상품 구매하기 클릭시
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function sold_out() {
+	Swal.fire({
+		title: '품절',
+		text: '품절 상품입니다. 다른 상품을 구매해주세요',
+		icon: 'warning',
+		closeOnClickOutside: false,
+		showCancelButton: true,
+		confirmButtonText: '다른 상품 보러가기',
+		cancelButtonText: '페이지 머물기',
+		reverseButtons: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			location.href = 'http://localhost:8080/aqua/member/product/goods_group.jsp ';
+		} else {
+			swal.close();
+		}
+	})
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 수량 입력 제한
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function inNumber(){
+          if(event.keyCode<48 || event.keyCode>57){
+             event.returnValue=false;
+          }
+}
+
+$(".numberOnly").on("keydown", function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 8 || e.keyCode == 9)) {
+        return false;
+    }
+});

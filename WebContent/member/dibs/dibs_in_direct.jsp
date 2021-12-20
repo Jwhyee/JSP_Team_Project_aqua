@@ -20,7 +20,7 @@ try {
 		pstmt.setString(2, p_id);
 		ResultSet rs = pstmt.executeQuery();
 
-		if (rs.next()) // 동일 상품이 이미 존재한다면 delete
+		if (rs.next()) 
 		{ 
 			String jsql2 = "DELETE FROM dibs WHERE m_id=? AND p_id = ?";
 			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
@@ -28,7 +28,7 @@ try {
 			pstmt2.setString(2, p_id);
 
 			pstmt2.executeUpdate();
-		} else // 동일 상품이 장바구니에 존재하지 않는다면, 새로운 상품레코드를 장바구니 테이블에 추가시킴
+		} else 
 		{
 			String jsql2 = "INSERT INTO dibs (dibs_no, p_id, m_id) VALUES (?,?,?)";
 			PreparedStatement pstmt2 = con.prepareStatement(jsql2);

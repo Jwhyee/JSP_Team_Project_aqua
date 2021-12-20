@@ -54,15 +54,13 @@
 			pstmt3.setInt(5, ct_qty_c);
 
 			pstmt3.executeUpdate();
-		} //  76행~97행 if-else문의 끝
+		}
 		
 	} catch (Exception e) {
 		out.println(e);
 	} // catch문 닫기		
 
-	//  장바구니에 상품을 등록 또는 갱신시킨 후, 장바구니 내역을 보여주도록 showCart.jsp를 호출함. 
 	response.sendRedirect("cart_show.jsp");
-	// response.sendRedirect("show_cart.jsp"); //  <jsp:forward page="showCart.jsp"/> 와 동일한 의미
 	%>
 </body>
 </html>

@@ -21,7 +21,7 @@
 			 </div>
 			 <c:choose>
 			 	<c:when test = "${empty s_m_id}">
-			 		<input name="id" class="form-control" placeholder="Id 입력" type="text" required/>
+			 		<input name="id" class="form-control" placeholder="Id 입력" type="text" required onkeyup="press()"/>
 			 	</c:when>
 			 	<c:otherwise>
 			 		<input name="id" class="form-control" placeholder="Id 입력" type="text" value="<%=s_m_id%>" required/>
@@ -33,7 +33,7 @@
 	    	<div class="input-group-prepend">
 			    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 			</div>
-	        <input name="pass" class="form-control" placeholder="비밀번호 입력" type="password" required/>
+	        <input name="pass" class="form-control" placeholder="비밀번호 입력" type="password" required onkeyup="press()"/>
 	    </div> <!-- form-group// -->
 	    
 	    <div class="fg-x400 form-group">
@@ -42,7 +42,7 @@
 	   	</form>
 	   	<!-- 로그인 form태그 끝 -->
 	   	
-	   	<div class="links">
+	   	<div class="links" align="center">
 	        <a href="../join/find_id_form.jsp">아이디 찾기</a> | <a href="../join/find_pass_form.jsp">비밀번호 찾기</a> | <a href="../join/insert_member.jsp">회원가입</a>
 	    </div>
 </article>

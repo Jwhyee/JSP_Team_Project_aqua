@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../../layout/header.jsp"%>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="../../css/style-favorite.css">
 <link rel="stylesheet" href="../../css/style-index.css">
 <link rel="stylesheet" href="../../css/style-common.css">
@@ -38,13 +37,11 @@
 <div class="frame">
 	<header>
 		<div id="header-first">
-			<form id="headerSearchForm" method="POST"
-				action="<%=request.getContextPath()%>/product?cmd=search">
-				<button class="headerSearchForm-btn">
+			<form id="headerSearchForm" method="POST" action="<%=request.getContextPath()%>/member/product/goods_group_search.jsp">
+				<button class="headerSearchForm-btn" onClick="keyword_check();">
 					<i class="tiny material-icons">search</i>
 				</button>
-				<input name="keyword" placeholder="상품명으로 검색"
-					class="headerSearchForm-input" />
+				<input name="keyword" placeholder="상품명으로 검색" class="headerSearchForm-input" value="" />
 			</form>
 	</header>
 	<!-- main 타이틀 시작 -->
@@ -73,11 +70,11 @@
 			String[] checked = new String[4];
 
 			for (int i = 0; i < compList_arr.length; i++) {
-				if (compList_arr[i].equals("상")) {
+				if (compList_arr[i].equals("아쿠아리움관")) {
 					checked[0] = "checked";
-				} else if (compList_arr[i].equals("중")) {
+				} else if (compList_arr[i].equals("파충류관")) {
 					checked[1] = "checked";
-				} else if (compList_arr[i].equals("하")) {
+				} else if (compList_arr[i].equals("정글존")) {
 					checked[2] = "checked";
 				} else if (compList_arr[i].equals("default")) {
 					checked[3] = "checked";
@@ -85,24 +82,23 @@
 			}
 			%>
 			<div class=" custom-checkbox favor-content">
-					<input type="radio" name="compList" value="상" <%=checked[0]%>/>
-					상
-				</div>
-				<div class=" custom-checkbox favor-content">
-					<input type="radio" name="compList" value="중" <%=checked[1]%>/>
-					중
-				</div>
-				<div class=" custom-checkbox favor-content">
-					<input type="radio" name="compList" value="하" <%=checked[2]%>/>
-					하
-				</div>
-				<div class=" custom-checkbox favor-content">
-					<input type="radio" name="compList" value="default" <%=checked[3]%>/>
-					전체보기
-				</div>
+				<input type="radio" name="compList" value="아쿠아리움관" <%=checked[0]%> />
+				아쿠아리움관
+			</div>
+			<div class=" custom-checkbox favor-content">
+				<input type="radio" name="compList" value="파충류관" <%=checked[1]%> />
+				파충류관
+			</div>
+			<div class=" custom-checkbox favor-content">
+				<input type="radio" name="compList" value="정글존" <%=checked[2]%> />
+				정글존
+			</div>
+			<div class=" custom-checkbox favor-content">
+				<input type="radio" name="compList" value="default" <%=checked[3]%> />
+				전체보기
+			</div>
 			<br>
-			<button type="button" class="btn btn-primary"
-				onclick="category_top()">검색</button>
+			<button type="button" class="btn btn-primary" onclick="category_top()">검색</button>
 		</form>
 		<br>
 		<div class="favor-sidebar-title">최근 본 상품</div>
@@ -120,10 +116,15 @@
 					String p_name = rs2.getString("p_name");
 					String recent_date = rs2.getString("recent_date");
 			%>
-			<li><a href="goods_select.jsp?p_id=<%=p_id%>">
-					<li><img src="../../img/product/<%=p_id%>.jpg" height="50px"
-							width="50px">
-				</a> &nbsp <a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a> </a></li>
+			<li>
+				<a href="goods_select.jsp?p_id=<%=p_id%>">
+					<li>
+						<img src="../../img/product/<%=p_id%>.jpg" height="50px" width="50px">
+				</a>
+				&nbsp
+				<a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a>
+				</a>
+			</li>
 			<%
 			}
 			} else {
@@ -139,10 +140,15 @@
 			String p_name = rs2.getString("p_name");
 			String recent_date = rs2.getString("recent_date");
 			%>
-			<li><a href="goods_select.jsp?p_id=<%=p_id%>">
-					<li><img src="../../img/product/<%=p_id%>.jpg" height="50px"
-							width="50px">
-				</a> &nbsp <a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a> </a></li>
+			<li>
+				<a href="goods_select.jsp?p_id=<%=p_id%>">
+					<li>
+						<img src="../../img/product/<%=p_id%>.jpg" height="50px" width="50px">
+				</a>
+				&nbsp;
+				<a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a>
+				</a>
+			</li>
 			<%
 			}
 			}
@@ -175,10 +181,23 @@
 					<!-- 카테코 -->
 					<li class="prd-item-name"><%=p_name%></li>
 					<!-- 상품명 -->
-					<li class="prd-item-price"><fmt:formatNumber
-							value="<%=p_price%>" type="number" />원</li>
+					<li class="prd-item-price">
+						<fmt:formatNumber value="<%=p_price%>" type="number" />
+						원
+					</li>
 					<!-- 가격 -->
-					<li class="prd-item-soldCount"><%=p_stock%>판매</li>
+					<%
+					if (p_stock > 0) {
+					%>
+					<li class="prd-item-soldCount"><%=p_stock%>판매
+					</li>
+					<%
+					} else {
+					%>
+					<li class="prd-item-name" style="color: red;">품절 상품입니다.</li>
+					<%
+					}
+					%>
 					<!-- 판매량 default = 0 -->
 				</ul>
 			</div>
@@ -210,13 +229,11 @@ ResultSet rs2 = pstmt2.executeQuery();
 <div class="frame">
 	<header>
 		<div id="header-first">
-			<form id="headerSearchForm" method="POST"
-				action="<%=request.getContextPath()%>/product?cmd=search">
+			<form id="headerSearchForm" method="POST" action="<%=request.getContextPath()%>/product?cmd=search">
 				<button class="headerSearchForm-btn">
 					<i class="tiny material-icons">search</i>
 				</button>
-				<input name="keyword" placeholder="상품명으로 검색"
-					class="headerSearchForm-input" />
+				<input name="keyword" placeholder="상품명으로 검색" class="headerSearchForm-input" />
 			</form>
 	</header>
 	<!-- main 타이틀 시작 -->
@@ -240,24 +257,23 @@ ResultSet rs2 = pstmt2.executeQuery();
 				<label class="custom-control-label" for="notSoldout">품절 제외<구현중...></label>
 			</div> -->
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="상" />
-				상
+				<input type="radio" name="compList" value="아쿠아리움관" />
+				아쿠아리움관
 			</div>
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="중" />
-				중
+				<input type="radio" name="compList" value="파충류관" />
+				파충류관
 			</div>
 			<div class=" custom-checkbox favor-content">
-				<input type="radio" name="compList" value="하" />
-				하
+				<input type="radio" name="compList" value="정글존" />
+				정글존
 			</div>
 			<div class=" custom-checkbox favor-content">
 				<input type="radio" name="compList" value="default" />
 				전체보기
 			</div>
 			<br>
-			<button type="button" class="btn btn-primary"
-				onclick="category_top()">검색</button>
+			<button type="button" class="btn btn-primary" onclick="category_top()">검색</button>
 		</form>
 		<br>
 		<div class="favor-sidebar-title">최근 본 상품</div>
@@ -269,10 +285,15 @@ ResultSet rs2 = pstmt2.executeQuery();
 				String p_name = rs2.getString("p_name");
 				String recent_date = rs2.getString("recent_date");
 			%>
-			<li><a href="goods_select.jsp?p_id=<%=p_id%>">
-					<li><img src="../../img/product/<%=p_id%>.jpg" height="50px"
-							width="50px">
-				</a> &nbsp <a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a> </a></li>
+			<li>
+				<a href="goods_select.jsp?p_id=<%=p_id%>">
+					<li>
+						<img src="../../img/product/<%=p_id%>.jpg" height="50px" width="50px">
+				</a>
+				&nbsp;
+				<a href="goods_select.jsp?p_id=<%=p_id%>"><%=p_name%></a>
+				</a>
+			</li>
 			<%
 			}
 			%>
@@ -304,10 +325,23 @@ ResultSet rs2 = pstmt2.executeQuery();
 					<!-- 카테코 -->
 					<li class="prd-item-name"><%=p_name%></li>
 					<!-- 상품명 -->
-					<li class="prd-item-price"><fmt:formatNumber
-							value="<%=p_price%>" type="number" />원</li>
+					<li class="prd-item-price">
+						<fmt:formatNumber value="<%=p_price%>" type="number" />
+						원
+					</li>
 					<!-- 가격 -->
-					<li class="prd-item-soldCount"><%=p_stock%>판매</li>
+					<%
+					if (p_stock > 0) {
+					%>
+					<li class="prd-item-soldCount"><%=p_stock%>판매
+					</li>
+					<%
+					} else {
+					%>
+					<li class="prd-item-name" style="color: red;">품절 상품입니다.</li>
+					<%
+					}
+					%>
 					<!-- 판매량 default = 0 -->
 				</ul>
 			</div>

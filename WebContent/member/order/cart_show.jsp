@@ -25,11 +25,6 @@ DecimalFormat dFormat = new DecimalFormat("###,###");		//숫자를 천단위 구
 
 	String ct_no = session.getId();   //세션 번호를 장바구니 번호로서 이용하기 위해 ctNo에 저장
 
-
-	// 장바구니에 물건을 담기 전후, mysql상에서 select * from cart;의 결과를 함께 확인/비교 해가면서
-	// cart테이블에 남아있는 상품레코드정보와 장바구니번호(ctNo)를 함께 이해해 보도록 할 것!
-	//  =>  홈페이지상에서 보여지는 장바구니 내역에 포함된 레코드들이, 실제로 cart테이블상에서는 
-	//         무엇을 의미하고 있는지 곰곰히 생각해 볼 것! (중요!)
 	String jsql = "select * from cart where ct_no = ?";
 	PreparedStatement pstmt = con.prepareStatement(jsql);
 	pstmt.setString(1, ct_no);
@@ -42,11 +37,12 @@ DecimalFormat dFormat = new DecimalFormat("###,###");		//숫자를 천단위 구
 
 	ResultSet rs6 = pstmt6.executeQuery();
 
-	if (!rs.next() && !rs6.next()) // 조회 결과가 존재하지 않으면,  rs.next()는 false를 리턴함. 
-	{ //  따라서,  !rs.next()의 값은 true가 됨
+	if (!rs.next() && !rs6.next()) 
+	{ 
 %>
 	<center>
 	장바구니가 비었습니다.
+	<br><br>
 	<a href="../product/goods_group.jsp" class="btn btn-secondary">쇼핑 계속하기</a>
 	</center>
 	<%
@@ -160,7 +156,7 @@ DecimalFormat dFormat = new DecimalFormat("###,###");		//숫자를 천단위 구
 						
 				%>
 				<tr>
-					<td><a href="../ticket/tickets_detail.jsp?t_id=<%=t_id%>"><img src="../../img/tickets/<%=t_id%>.jpg"width="50" height="50"></a></td>
+					<td><a href="../ticket/tickets_detail.jsp?t_id=<%=t_id%>"><img src="../../img/tickets/<%=t_id%>.jpeg"width="50" height="50"></a></td>
 					<td>
 						<a href="../ticket/tickets_detail.jsp?t_id=<%=t_id%>"style="color:black">
 							<%=t_name %> <br>

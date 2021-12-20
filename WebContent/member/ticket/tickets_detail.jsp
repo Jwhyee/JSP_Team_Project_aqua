@@ -3,9 +3,11 @@
 <%@ page import="java.sql.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../../layout/header.jsp"%>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="../css/style-product.css">
+<link rel="stylesheet" type="text/css"
+	href="../../css/review_style.css?aa">
 <body onload="init();">
-	<link rel="stylesheet" type="text/css" href="../../css/style-product.css">
 <head>
 <meta charset="UTF-8">
 
@@ -22,6 +24,8 @@ try {
 	Connection con = DriverManager.getConnection(DB_URL, DB_ID, DB_PASSWORD);
 
 	String key = request.getParameter("t_id");
+	String ticket = "ticket";
+	String product = "product";
 	String jsql = "SELECT * FROM ticket WHERE t_id = ?";
 
 	PreparedStatement pstmt = con.prepareStatement(jsql);
@@ -59,7 +63,7 @@ try {
 					<!-- 이미지 -->
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<img src="../../img/tickets/<%=t_id%>.jpg" width="500" height="200">
+							<img src="../../img/tickets/<%=t_id%>.jpeg" width="500" height="200">
 						</div>
 					</div>
 				</div>
@@ -155,10 +159,12 @@ try {
 					href="#detail-img-text-box" id="tab-img-text-a">상품정보</a></li>
 			<li class="active" id="tab-review"><a href="#detail-review-box"
 					id="tab-review-a">리뷰</a></li>
+			<!--
 			<li class="active" id="tab-qna"><a href="#detail-qna-box"
 					id="tab-qna-a">Q&amp;A</a></li>
+			-->
 			<li class="active" id="tab-purchaseInfo"><a
-					href="#detail-purchaseInfo-box" id="tab-purchaseInfo-a">환불규정</a></li>
+					href="#detail-purchaseInfo-box" id="tab-purchaseInfo-a">주문정보</a></li>
 		</ul>
 	</div>
 	<!-- 상품정보/리뷰/Q&A/주문정보 끝 -->
@@ -172,21 +178,62 @@ try {
 		</a>
 	</div>
 	<!-- 우측 하단 sticky 끝 -->
-	<div id="detail-img-text-box"></div>
+	<div id="detail-img-text-box">
+		<img src="../../img/tickets/<%=t_id%>_description.jpg">
+	</div>
 	<!-- 상품 상세 설명 이미지/글 끝 -->
 
 	<!-- 리뷰 시작 -->
 	<div id="detail-review-box">
 		<div class="detail-review-header">
 			리뷰
-			<a class="detail-qna-header-a" href="review.jsp">전체보기</a>
+			<a class="detail-qna-header-a" href="../product/review_list.jsp?t_id=<%=t_id%>">전체보기</a>
 		</div>
-		<div class="detail-qna-body"></div>
+		<div class="detail-qna-body">
+			<table id = 'review_list_table'>
+					<tr id = 'review_t_list_title_line' height = 50>
+						<td width="50">작성일</td>
+						<td width="50">작성자</td>
+						<td width="80">상품 이름</td>
+						<td width="50">e-티켓 만족도</td>
+						<td width="50">현장 만족도</td>
+						<td width="200">후기 내용</td>
+					</tr>
+			<%
+			String jsql2 = "SELECT * FROM review WHERE r_category = ? AND r_product = ? order by r_no desc limit 5";
+			PreparedStatement pstmt2 = con.prepareStatement(jsql2);
+			pstmt2.setString(1, ticket);
+			pstmt2.setString(2, t_name);
+
+			ResultSet rs2 = pstmt2.executeQuery();
+			while(rs2.next()){
+				String r_writer = rs2.getString("r_writer");
+				String r_product = rs2.getString("r_product");
+				String r_date = rs2.getString("r_date");
+				String d_satisfy = rs2.getString("d_satisfy");
+				String p_satisfy = rs2.getString("p_satisfy");
+				String r_content = rs2.getString("r_content");
+				%>
+				
+					<tr id = 'review_t_list_content_line'>
+						<td><%=r_date%></td>
+						<td><%=r_writer%></td>
+						<td><%=r_product%></td>
+						<td><%=d_satisfy%></td>
+						<td><%=p_satisfy%></td>
+						<td><%=r_content%></td>
+					</tr>
+				
+				<%
+			}
+			%>
+			</table>
+		</div>
 
 	</div>
 	<!-- 리뷰 끝 -->
 
-	<!-- Q&A 시작 -->
+	<!-- Q&A 시작
 	<div id="detail-qna-box">
 		<div class="detail-qna-header">
 			q&a
@@ -195,13 +242,19 @@ try {
 		<div class="detail-qna-body"></div>
 
 	</div>
-	<!-- Q&A 끝 -->
+	Q&A 끝 -->
 
 	<!-- 주문정보 시작 -->
 	<div id="detail-purchaseInfo-box">
-		<div class="detail-purchaseInfo-header">환불 규정</div>
-
-		<b>[변경 및 취소안내]</b><br/>
+		<div class="detail-purchaseInfo-header">주문 정보</div>
+		<b>[ 배송 정보 ]</b><br />
+		<p>
+			고객센터 연락이 어려우니 게시판에 문의주시면 빠르게 답변드리도록 하겠습니다.<br/>
+			구매 시각으로부터
+			최대 1시간 내로 상품을 받으 실 수 있습니다.<br/> 
+		</p>
+		
+		<b>[ 변경 및 취소안내 ]</b><br/>
 		<p>
 			※특별상품이므로 부분사용 및 부분 취소/환불 불가합니다.<br>
 			※판매기간 내 취소가능합니다.<br>
@@ -211,14 +264,14 @@ try {
 			※ 구매시 기재한 이용자 정보로만 재발송 가능<br>
 			※ 연락처 변경 재발송 불가<br>
 		</p>
-		<b>[업체정보]</b><br/>
+		<b>[ 업체정보 ]</b><br/>
 		<p>
 			업체명 : 아쿠아플래닛<br>
 			주 소 : (00000) 수원<br>
 			홈페이지 : index.html<br>
 			시설문의 : 1234-5678<br>
 		</p>
-		<b>[판매처정보]</b><br/>
+		<b>[ 판매처정보 ]</b><br/>
 		<p>
 			업체명 : 아쿠아플래닛<br>
 			예약/취소문의 : 1234-5678<br>
@@ -238,4 +291,4 @@ out.println(e);
 }
 %>
 <%@ include file="../../layout/footer.jsp"%>
-<script type="text/javascript" src="../../js/tickets.js"></script>
+<script type="text/javascript" src="../../js/tickets.js?123a123123a"></script>

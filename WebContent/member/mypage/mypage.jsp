@@ -2,15 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@page import = "java.sql.*" %>
 <%@ include file="../../layout/mypage_header.jsp"%>
-<link rel="stylesheet" type="text/css" href="../../css/style-table.css?v=123">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/table_style_ver2.css?abcd">
 <!--  menu list 시작  -->
     <section id="menu">
 		 <ul class="hbox-menu">
-		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_member.jsp" style="color:black">회원정보</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage.jsp" style="color:black">회원정보</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_order.jsp">구매내역</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_qna.jsp">문의내역</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_cart.jsp">장바구니</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_dibs.jsp">찜목록</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_review.jsp">리뷰</a></li>
 	    </ul>
 	</section>
 	
@@ -40,18 +42,17 @@ try {
 	String joomin = rs.getString("m_joomin");
 	String address = rs.getString("m_address");
 	String solar = rs.getString("m_solar");
+	String reserves = rs.getString("m_reserves");
 %>
 
-	
 	<center>
-	<font  size='6'>
-		<b>[<%=sid %>님의 상세 정보] </b>
-	</font>
 	<p>
-		<table border="2" cellpadding="10"
-		style="font-size: 10pt; font-family: 맑은 고딕" class="detail">
+		<table class="detail">
 		<tr>
-			<th>ID</th>
+			<th colspan="2" class="table_title"><%=sid %>님의 회원 정보</th>
+		</tr>
+		<tr>
+			<th>아이디</th>
 			<td><%=id%></td>
 		</tr>
 		<tr>
@@ -91,11 +92,16 @@ try {
 			<th>성별</th>
 			<td><%=sex%></td>
 		</tr>
+		<tr>
+			<th>적립금</th>
+			<td><i class="fas fa-coins"></i> &nbsp;&nbsp;<%=reserves %>원</td>
+		</tr>
     </table>
 	<p>
 
-<a href="mypage_member_update.jsp?id=<%=id%>"
-			style="font-size:10pt;font-family:맑은 고딕">수정</a>&nbsp;&nbsp;
+<button type="button" style="font-size:10pt;font-family:맑은 고딕; color : white; border : none;" class ="btn btn-large btn-primary" onclick="member_update()">정보 수정</button>&nbsp;&nbsp;&nbsp;
+<button type="button" style="font-size:10pt;font-family:맑은 고딕; color : white; background-color : #CA4444; border : none;" class ="btn btn-large btn-primary" onclick="member_delete()">회원 탈퇴</button>
+			
 
 </center>
     
@@ -106,4 +112,5 @@ out.println(e);
 %>
 </body>
 <%@ include file="../../layout/footer.jsp"%>
+<script type="text/javascript" src="../../js/mypage.js?v123123"></script>
 </html>

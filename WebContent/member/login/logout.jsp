@@ -1,21 +1,17 @@
-<%@ page contentType="text/html;charset=euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+
 <%
+String sid = (String) session.getAttribute("sid");
 String DB_URL = "jdbc:mysql://localhost:3306/aqua_project";
 String DB_ID = "aqua";
 String DB_PASSWORD = "1234";
 
 Class.forName("org.gjt.mm.mysql.Driver");  
  Connection con = DriverManager.getConnection(DB_URL, DB_ID, DB_PASSWORD); 
-
-	String jsql2 = "delete from cart";
-	PreparedStatement pstmt2 = con.prepareStatement(jsql2);
-	pstmt2.executeUpdate();
 	
-	String jsql = "delete from temp_cart";
-	PreparedStatement pstmt = con.prepareStatement(jsql);
-	pstmt.executeUpdate();
 	
-    session.invalidate();    //  ¼¼¼Ç¼³Á¤À» ¹«È¿È­½ÃÅ´
-    response.sendRedirect("../index.jsp");     //  <jsp:forward page="index.html"/>°ú µ¿ÀÏÇÑ ÀÇ¹Ì
+    session.invalidate();    //  ì„¸ì…˜ì„¤ì •ì„ ë¬´íš¨í™”ì‹œí‚´
+    response.sendRedirect("../../index.jsp");  
 %>

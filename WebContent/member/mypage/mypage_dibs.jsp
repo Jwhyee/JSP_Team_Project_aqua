@@ -8,11 +8,12 @@
 <!--  menu list 시작  -->
     <section id="menu">
 		 <ul class="hbox-menu">
-		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_member.jsp">회원정보</a></li>
+		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage.jsp">회원정보</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_order.jsp">구매내역</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_qna.jsp">문의내역</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_cart.jsp">장바구니</a></li>
 		    <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_dibs.jsp" style="color:black">찜목록</a></li>
+		     <li><a href="${pageContext.request.contextPath}/member/mypage/mypage_review.jsp">리뷰</a></li>
 	    </ul>
 	</section>
 	<%
@@ -36,8 +37,8 @@
 	{ //  따라서,  !rs.next()의 값은 true가 됨
 %>
 	<center>
-	찜목록이 비었습니다.
-	<a href="../product/goods_group.jsp" class="btn btn-secondary">쇼핑 계속하기</a>
+	찜목록이 비었습니다. <br><br>
+	<a href="../product/goods_group.jsp" class="btn btn-secondary" style="color:white;">쇼핑 계속하기</a>
 	</center>
 	<br>
 	<%
@@ -49,8 +50,7 @@
 		<div class="row">
 			<table width=100%>
 				<tr>
-					<td align="left"><a href="../dibs/dibs_all_delete.jsp?id=<%=sid %>" class="btn btn-danger">찜목록 비우기</a></td>
-					<td align="right"><a href="../dibs/dibs_cart_order_in.jsp?ct_no=<%=dibs_no %>" class="btn btn-success">전체 장바구니에 추가</a></td>
+					<td align="left"><a href="../dibs/dibs_all_delete.jsp?id=<%=sid %>" class="btn btn-danger" style="color:white;">찜목록 비우기</a></td>
 				</tr>
 			</table>
 		</div>
@@ -64,6 +64,7 @@
 					<th>비고</th>
 					<th>비고</th>
 				</tr>
+
 
 				<%
 
@@ -91,14 +92,14 @@
 				<tr>
 					<td><img src="../../img/product/<%=p_id%>.jpg"width="50" height="50"></td>
 					<td><%=p_name %></td>
-					<td><a href="../dibs/dibs_cart_in.jsp?p_id=<%=p_id%>" class="badge badge-danger">장바구니에 추가</a></td>
-					<td><a href="../dibs/dibs_delete.jsp?p_id=<%=p_id%>" class="badge badge-success">삭제</a></td>
+					<td><a href="../dibs/dibs_cart_in.jsp?p_id=<%=p_id%>" class="badge badge-success" style="color:white;">장바구니에 추가</a></td>
+					<td><a href="../dibs/dibs_delete.jsp?p_id=<%=p_id%>" class="badge badge-danger" style="color:white;">삭제</a></td>
 				</tr>
 				<% 
 					}
 				%>
 			</table>
-			<a href="../product/goods_group.jsp" class="btn btn-secondary">상품 보러 가기
+			<a href="../product/goods_group.jsp" class="btn btn-secondary" style="color:white;">상품 보러 가기
 				&raquo;</a>
 		</div>
 

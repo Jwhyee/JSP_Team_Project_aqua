@@ -34,7 +34,7 @@
 					<table id = 't_select' border="0">
 					<tr>
 						<td align=center rowspan="6" width = "200px">
-							<img src="../../img/tickets/<%=t_id%>.jpg" width="180" height="180">
+							<img src="../../img/tickets/<%=t_id%>.jpeg" width="160" height="160">
 						</td>
 						<td id = 't_name_head' colspan="3">&nbsp&nbsp<%=t_name %></td>
 					</tr>
@@ -47,7 +47,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td id='t_title' rowspan="3">
+						<td id='t_title' rowspan="3" style="vertical-align: top;">
 							<b>&nbsp&nbsp가격</b>
 						</td>
 						<td id='t_desc' colspan="2">
@@ -62,14 +62,6 @@
 					<tr>
 						<td id='t_desc' colspan="2">
 							어린이(만 4세 ~ 12세) : <%=t_price_child%>원
-						</td>
-					</tr>
-					<tr>
-						<td id='t_title'>
-							<b>&nbsp&nbsp문의</b>
-						</td>
-						<td id='t_desc' colspan="2">
-							1234-1234
 						</td>
 					</tr>
 				</table>

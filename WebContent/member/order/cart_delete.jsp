@@ -25,8 +25,7 @@ try {
 		PreparedStatement pstmt = con.prepareStatement(jsql);
 		pstmt.setString(1, p_id);
 		
-		pstmt.executeUpdate();
-		response.sendRedirect("cart_show.jsp");    //   <jsp:forward page="showCart.jsp"/>와 같은 의미임
+		pstmt.executeUpdate(); 
 	}
 	else{
 		String jsql2 = "delete from cart_t where t_id=?";   
@@ -34,7 +33,7 @@ try {
 		pstmt2.setString(1, t_id);
 		
 		pstmt2.executeUpdate();
-		response.sendRedirect("cart_show.jsp");    //   <jsp:forward page="showCart.jsp"/>와 같은 의미임
+		response.sendRedirect("cart_show.jsp");  
 	}
 		
     } catch (Exception e) {

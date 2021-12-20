@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/aqua_header.css?v=1232">
 
@@ -57,7 +58,6 @@
 	
 
 
-
 <%
 String sid = (String) session.getAttribute("sid");
 %>
@@ -78,7 +78,7 @@ String sid = (String) session.getAttribute("sid");
 		<div class="bg_gnb"></div>
 		<div class="inner">
 			<h1 class="logo">
-				<a href="${pageContext.request.contextPath}/member/index.jsp">아쿠아플라넷</a>
+				<a href="${pageContext.request.contextPath}/index.jsp">아쿠아플라넷</a>
 				
 			</h1>
 			<div class="nav_wrap">
@@ -108,18 +108,18 @@ String sid = (String) session.getAttribute("sid");
 								<span class="kor">홈</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="${pageContext.request.contextPath}/html/about_us_info.html">아쿠아리움 소개</a></li>
-								<li><a href="${pageContext.request.contextPath}/html/about_us_road.html">찾아 오시는 길</a></li>
-								<li><a href="${pageContext.request.contextPath}/html/about_us_cost.html">이용 요금 안내</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/about_us_info.jsp">아쿠아리움 소개</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/about_us_road.jsp">찾아 오시는 길</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/about_us_cost.jsp">이용 요금 안내</a></li>
 							</ul></li>
 						<li><a href="#">
 								<span class="eng">Theme</span>
 								<span class="kor">테마</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="${pageContext.request.contextPath}/html/themeA.html">Theme A</a></li>
-								<li><a href="${pageContext.request.contextPath}/html/themeB.html">Theme B</a></li>
-								<li><a href="${pageContext.request.contextPath}/html/themeC.html">Theme C</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/themeA.jsp">아쿠아리움관</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/themeB.jsp">파충류관</a></li>
+								<li><a href="${pageContext.request.contextPath}/html/themeC.jsp">정글존</a></li>
 
 							</ul></li>
 						<li><a href="#">
@@ -127,13 +127,8 @@ String sid = (String) session.getAttribute("sid");
 								<span class="kor">제품</span>
 							</a>
 							<ul class="submenu">
-								<li><a
-										href="${pageContext.request.contextPath}/member/ticket/tickets_select.jsp">티켓
-										구매하기</a></li>
-								<li><a
-										href="${pageContext.request.contextPath}/member/product/goods_group.jsp">굿즈
-										구매하기</a></li>
-								<li><a href="#">후기 게시판</a></li>
+								<li><a href="${pageContext.request.contextPath}/member/ticket/tickets_select.jsp">티켓 구매하기</a></li>
+								<li><a href="${pageContext.request.contextPath}/member/product/goods_group.jsp">굿즈 구매하기</a></li>
 
 							</ul></li>
 						<li><a href="#">
@@ -142,16 +137,17 @@ String sid = (String) session.getAttribute("sid");
 							</a>
 							<ul class="submenu">
 								<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_notice.jsp">공지사항</a></li>
-							<c:choose>
-								<c:when test="${empty sid}">
-									<li><a class="btn" onClick="need_login();">개별문의 (1:1)</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_qna_write.jsp">개별문의 (1:1)</a></li>
-								</c:otherwise>
-							</c:choose>
+								<c:choose>
+									<c:when test="${empty sid}">
+										<li><a class="button" onClick="need_login();">개별문의 (1:1)</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath}/member/about_us/about_us_qna_write.jsp">개별문의 (1:1)</a></li>
+									</c:otherwise>
+								</c:choose>
 
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 				</nav>
 			</div>

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+#review_list_title_line{
+	border-top : 1px solid #ccc;
+	border-bottom : 1px solid #ccc;
+	text-align : center;
+}
+#review_list_title_line td{
+	font-weight : bold;
+}
+#review_list_table tr td{
+	padding : 10px;
+}
+#review_write_btn button{
+	font-size : 10pt;
+	font-weight : lighter;
+	line-height : 15px;
+	border : none;
+	width : 80px;
+	height : 30px;
+}
+#review_list_table a{
+	color : black;
+}
+
+/* 티켓 상세 페이지 리뷰 화면 */
+
+#review_t_list_content_line{
+	text-align : center;
+}
+#review_t_list_title_line{
+	border-top : 1px solid #ccc;
+	border-bottom : 1px solid #ccc;
+	text-align : center;
+	font-weight : bold;
+}
+#review_p_list_table tr td{
+	padding : 10px;
+	text-align : center;
+}
+#review_p_list_title_line{
+	border-bottom : 2px solid black;
+	font-weight : bold;
+	text-align : center;
+}
+#review_p_list_content_down_line{
+	border-bottom : 1px solid #ccc;
+	text-align : center;
+}
+
+/* 마이 페이지 리뷰 작성 */ 
+#mypage_r_in_table tr{
+	border-bottom : 1px solid #ccc;
+}
+
+#mypage_r_in_title{
+	font-weight : bold;
+	width : 150px;
+	height : 50px;
+	text-align : left;
+}
+#mypage_r_in_table td{
+	text-align : left;
+	padding : 10px;
+}
+#mypage_r_in_table textarea{
+	resize : none;
+	padding : 10px;
+}
+#mypage_r_in_table input[type="text"]{
+	vertical-align: middle;
+	width : 200px;
+	height : 30px;
+	padding : 10px;
+}
+#mypage_r_in_btn{
+	font-size : 13pt;
+	font-weight : lighter;
+	line-height : 15px;
+	color : white;
+	background-color : #2535C7;
+	border : none;
+	width : 120px;
+	height : 40px;
+}

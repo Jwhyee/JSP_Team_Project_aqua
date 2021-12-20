@@ -72,18 +72,18 @@ try {
 						<%
 						String[] cate = p_category.split("");
 						String[] cate_select = new String[3];
-						if (cate[0].equals("상")) {
+						if (cate[0].equals("아쿠아리움관")) {
 							cate_select[0] = "selected";
-						} else if (cate[0].equals("중")) {
+						} else if (cate[0].equals("파충류관")) {
 							cate_select[1] = "selected";
-						} else if (cate[0].equals("하")) {
+						} else if (cate[0].equals("정글존")) {
 							cate_select[2] = "selected";
 						}
 						%>
 						<select name=ctg class="">
-							<option value="010" <%=cate_select[0]%>>상
-							<option value="011" <%=cate_select[1]%>>중
-							<option value="011" <%=cate_select[2]%>>하
+							<option value="아쿠아리움관" <%=cate_select[0]%>>아쿠아리움관
+							<option value="파충류관" <%=cate_select[1]%>>파충류관
+							<option value="정글존" <%=cate_select[2]%>>정글존
 						</select>
 					</div>
 				</td>

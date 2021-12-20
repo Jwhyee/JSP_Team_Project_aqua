@@ -20,7 +20,7 @@ try {
 	pstmt.setString(2, sid);
 
 	pstmt.executeUpdate();
-	response.sendRedirect("../mypage/mypage_dibs.jsp"); //   <jsp:forward page="showCart.jsp"/>와 같은 의미임
+	response.sendRedirect("../mypage/mypage_dibs.jsp");
 
 } catch (Exception e) {
 	out.println(e);

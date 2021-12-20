@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import = "java.sql.*" %>
 <%@ include file="../../layout/mypage_header.jsp"%>
-<link rel="stylesheet" type="text/css" href="../../css/style-table.css?v=123">
+<link rel="stylesheet" type="text/css" href="../../css/table_style_ver2.css?a">
 <%
 try {
 	String DB_URL = "jdbc:mysql://localhost:3306/aqua_project";
@@ -12,10 +12,9 @@ try {
 	Class.forName("org.gjt.mm.mysql.Driver");
 	Connection con = DriverManager.getConnection(DB_URL, DB_ID, DB_PASSWORD);
 
-	String key = request.getParameter("id");
 	String jsql = "select * from member where m_id = ?";
 	PreparedStatement pstmt = con.prepareStatement(jsql);
-	pstmt.setString(1, key);
+	pstmt.setString(1, sid);
 
 	ResultSet rs = pstmt.executeQuery();
 	rs.next();
@@ -35,13 +34,15 @@ try {
 <center>
 	<form name="newMem" method=post action=mypage_member_update_result.jsp>
 		<table style="font-size: 10pt; font-family: 맑은 고딕" class="detail">
-		
+			<tr>
+				<th colspan="2" class="table_title">회원 정보 수정</th>
+			</tr>
 			<tr>
 				<th>ID</th>
 				<td>
 					<input name="id" class="form-control" placeholder="Id 입력"
 						type="hidden" value="<%=id%>" required />
-					&nbsp &nbsp<%=id%></td>
+					&nbsp; &nbsp;<%=id%></td>
 				</div>
 			</tr>
 			<tr>
@@ -67,7 +68,7 @@ try {
 							<%String[] joominArr = joomin.split("-");%>
 							placeholder="주민번호 앞 자리 입력 " type="text" maxlength="6"
 							value=<%=joominArr[0]%> required />
-						&nbsp - &nbsp
+						&nbsp; - &nbsp;
 						<input name="joomin2" class="form-control"
 							placeholder="주민번호 뒷 자리 입력 " type="text" maxlength="7"
 							value=<%=joominArr[1]%> required />
@@ -130,11 +131,11 @@ try {
 							<option value="018" <%=hpSelected[4]%>>018
 							<option value="019" <%=hpSelected[5]%>>019
 						</select>
-						-
+						&nbsp;&nbsp;-&nbsp;&nbsp;
 						<input name="phone2" class="form-control"
 							placeholder="중간번호 4자리 입력 " type="text" maxlength="4"
 							value="<%=hpArr[1]%>" required />
-						-
+						&nbsp;&nbsp;-&nbsp;&nbsp;
 						<input name="phone3" class="form-control" placeholder="뒷 4자리 입력 "
 							type="text" maxlength="4" value="<%=hpArr[1]%>" required />
 					</div>
@@ -156,8 +157,8 @@ try {
 						placeholder="주소 검색을 눌러 입력" type="text" value="<%=address%>"
 						required onkeypress="return false;"
 						style="caret-color: transparent !important;" />
-					<br> <br>
-					<input type="button" value="주소 검색" onclick="goPopup();" />
+					<br>
+					<input type="button" class="btn btn-large btn-primary" style ="font-size : 10px;"value="주소 검색" onclick="goPopup();" />
 				</td>
 			</tr>
 			<tr>
